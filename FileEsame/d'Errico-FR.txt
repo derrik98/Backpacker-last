@@ -1,0 +1,4 @@
+1.	The system shall take into account the choices set by the user.
+2.	The system shall provide the possibility to save the calculated route in the favorites.
+3.	The system shall to recommend the best restaurants to the user
+4.	The system shall be able to connect to the maps to guide the user.
