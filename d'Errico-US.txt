@@ -1,3 +1,0 @@
-1.	As a user, I want to select monuments already visited, so that I can include in my itinerary the monuments not seen.
-2.	As a user, I want to choose wheter to eat in a restaurants or not, so that I can include it in my itinerary.
-3.	As a user, I want to save an itineraty in my favourites, so that I can reread it in the future.
