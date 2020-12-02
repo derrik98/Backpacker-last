@@ -1,4 +1,5 @@
 package graphic;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -49,6 +50,8 @@ public class HomeGraphicInterface extends Application{
 	protected static JPanel profilePanel;
 	protected static JPanel subOptionPanel;
 	protected static JPanel InformationPanel;
+	protected static JPanel loginPanel;
+	protected static JLabel Home;
 	protected static int larghezza;
 	protected static int altezza;
 	
@@ -77,7 +80,7 @@ public class HomeGraphicInterface extends Application{
 		label = new JLabel();
 		ImageIcon image = new ImageIcon("resources/oggetti.jpg");
 		ImageIcon imageIcon = new ImageIcon(image.getImage().getScaledInstance(larghezza, image.getIconHeight()/2, Image.SCALE_AREA_AVERAGING));
-		System.out.println(imageIcon.getIconWidth() +"," +  imageIcon.getIconHeight());
+		System.out.println("bellaaaa" + imageIcon.getIconWidth() +"," +  imageIcon.getIconHeight());
 		label.setMaximumSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
 
 		imagePanel.setMaximumSize(new Dimension(larghezza, (imageIcon.getIconHeight())));
@@ -86,12 +89,13 @@ public class HomeGraphicInterface extends Application{
 		imagePanel.add(label);
 		panel.add(imagePanel);
 		panel.add(Box.createRigidArea(new Dimension(0,5)));
+		System.out.println("ciaoooo"+imagePanel.getMaximumSize().height);
 		/////////////////////////////////////////////////////////////
 		optionPanel = new JPanel();
 		optionPanel.setLayout(new BoxLayout(optionPanel, BoxLayout.X_AXIS));
 		optionPanel.add(Box.createRigidArea(new Dimension(15,0)));
 				
-		JLabel Home = new JLabel("Home");
+		Home = new JLabel("Home");
 		System.out.println("optionPanel, " + optionPanel.getMaximumSize().width);
 		System.out.println("Home, " + Home.getMaximumSize().width);
 		Home.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -151,6 +155,7 @@ public class HomeGraphicInterface extends Application{
 		Login.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Login);
+				 new setScene().setLogin();
 				 System.out.println("Login clicked");
 		        }
 		});
@@ -161,7 +166,7 @@ public class HomeGraphicInterface extends Application{
 		
 
 		optionPanel.setBackground(Color.WHITE);
-		optionPanel.setMaximumSize(new Dimension(larghezza, Home.getHeight()+10));
+		//optionPanel.setMaximumSize(new Dimension(larghezza, Home.getMaximumSize().height+5));
 		//optionPanel.setBorder(new LineBorder(Color.BLACK));
 		System.out.println("pannello" + optionPanel.getHeight());
 		panel.add(optionPanel);
@@ -238,7 +243,7 @@ public class HomeGraphicInterface extends Application{
 		System.out.println(larghezza + "," + altezza);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(larghezza,altezza);
+		frame.setMaximumSize(new Dimension(larghezza,altezza));
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 		

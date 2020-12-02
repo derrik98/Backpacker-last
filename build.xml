@@ -92,4 +92,9 @@
             <classpath refid="BackPacker.classpath"/>
         </java>
     </target>
+    <target name="HomeGraphicInterface (2)">
+        <java classname="graphic.HomeGraphicInterface" failonerror="true" fork="yes">
+            <classpath refid="BackPacker.classpath"/>
+        </java>
+    </target>
 </project>
