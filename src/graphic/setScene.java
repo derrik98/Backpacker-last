@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -79,18 +80,18 @@ public class setScene extends HomeGraphicInterface{
 		subOptionPanel.add(savedRoutes);
 		subOptionPanel.add(Box.createRigidArea(new Dimension(15,0)));
 		
-		JLabel favouritesFood = new JLabel("Favourites Food");
-		favouritesFood.setFont(new Font("Verdana", Font.PLAIN, 18));
-		
-		favouritesFood.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-		favouritesFood.addMouseListener(new MouseAdapter() {
-			 public void mouseClicked(MouseEvent e) {
-				setFont(favouritesFood);
-				System.out.println("Home clicked");
-		        }
-		});	
-		subOptionPanel.add(favouritesFood);
+//		JLabel favouritesFood = new JLabel("Favourites Food");
+//		favouritesFood.setFont(new Font("Verdana", Font.PLAIN, 18));
+//		
+//		favouritesFood.setCursor(new Cursor(Cursor.HAND_CURSOR));
+//
+//		favouritesFood.addMouseListener(new MouseAdapter() {
+//			 public void mouseClicked(MouseEvent e) {
+//				setFont(favouritesFood);
+//				System.out.println("Home clicked");
+//		        }
+//		});	
+//		subOptionPanel.add(favouritesFood);
 		subOptionPanel.add(Box.createRigidArea(new Dimension(15,0)));		
 		JLabel settings = new JLabel("Settings");
 		settings.setFont(new Font("Verdana", Font.PLAIN, 18));	
@@ -131,20 +132,57 @@ public class setScene extends HomeGraphicInterface{
         panel.add(optionPanel);
         panel.add(Box.createRigidArea(new Dimension(0,30)));
         
-        loginPanel = new JPanel();
+        usernamePanel = new JPanel();
 	    
 	    
-	    JLabel login = new JLabel("insert login");
-	    login.setVisible(true);
-	    loginPanel.add(login);
+	    JLabel username = new JLabel("username or e-mail");
+	   // login.setVisible(true);
+	    usernamePanel.add(username);
 		
-		JTextField textFieldLogin = new JTextField(25);
-		textFieldLogin.setVisible(true);
-		loginPanel.add(textFieldLogin);
-		loginPanel.setBackground(Color.WHITE);
-		//loginPanel.setMaximumSize(new Dimension(larghezza/3, 50));
-		panel.add(loginPanel);
-		panel.add(Box.createRigidArea(new Dimension(0,30)));
+		JTextField textFieldurn = new JTextField(20);
+		//textFieldLogin.setVisible(true);
+		usernamePanel.add(textFieldurn);
+		
+		usernamePanel.setBackground(Color.WHITE);
+		usernamePanel.setMaximumSize(new Dimension(larghezza/3, 50));
+		panel.add(usernamePanel);
+		panel.add(Box.createRigidArea(new Dimension(0,15)));
+		
+		passwordPanel = new JPanel();
+		
+		JLabel password = new JLabel("password");
+		passwordPanel.add(password);
+			
+	    JTextField textFieldpsw = new JTextField(20);
+		passwordPanel.add(textFieldpsw);
+		passwordPanel.setBackground(Color.WHITE);
+		passwordPanel.setMaximumSize(new Dimension(larghezza/3, 50));
+		panel.add(passwordPanel);
+		panel.add(Box.createRigidArea(new Dimension(0,15)));
+			
+		
+		JPanel btnLoginPanel = new JPanel();
+		JButton btnLogin = new JButton("Login");
+		
+		btnLoginPanel.add(btnLogin);
+		btnLoginPanel.setBackground(Color.WHITE);
+		btnLoginPanel.setMaximumSize(new Dimension(75, 15));
+		panel.add(btnLoginPanel);
+		
+			
+		JPanel registrationPanel = new JPanel();
+		registrationPanel.setBackground(Color.WHITE);
+		JLabel registration = new JLabel("Registration");
+		registration.setFont(new Font("Verdana", Font.PLAIN, 18));		
+		registration.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		registration.addMouseListener(new MouseAdapter() {
+			 public void mouseClicked(MouseEvent e) {
+				//setFont(savedRoutes);
+				System.out.println("registration clicked");
+			    }
+		});	
+		registrationPanel.add(registration);
+		panel.add(registrationPanel);
 	}
 	
 //	label = new JLabel();

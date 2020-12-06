@@ -22,14 +22,9 @@
 	}
 %>
 
-
 <html>
 <head>
-	<title>Login page</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="js/jquerymin.js"></script>
-	<link href="js/bootstrap.min.js"></script>
-	<link href="css/style.css" rel="stylesheet">
+	
 </head>
 <body>
 

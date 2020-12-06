@@ -50,7 +50,8 @@ public class HomeGraphicInterface extends Application{
 	protected static JPanel profilePanel;
 	protected static JPanel subOptionPanel;
 	protected static JPanel InformationPanel;
-	protected static JPanel loginPanel;
+	protected static JPanel usernamePanel;
+	protected static JPanel passwordPanel;
 	protected static JLabel Home;
 	protected static int larghezza;
 	protected static int altezza;

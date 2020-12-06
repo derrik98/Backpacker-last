@@ -87,6 +87,7 @@
 			<td><input name="Elettronica" type="checkbox">Elettronica</td>
 			<td><input name="Casa" type="checkbox">Casa</td>
 		</tr>
+		
 		<tr>
 			<td>Sconto</td>
 			<td><input type="radio" name="sconto">10% sul totale</td>

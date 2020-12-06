@@ -9,6 +9,8 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
     <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/annotations-api.jar"/>
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/catalina-ant.jar"/>
@@ -36,13 +38,11 @@
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat7-websocket.jar"/>
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/websocket-api.jar"/>
     </path>
-    <path id="Web App Libraries.libraryclasspath"/>
-    <path id="EAR Libraries.libraryclasspath"/>
     <path id="BackPacker.classpath">
         <pathelement location="build/classes"/>
-        <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
