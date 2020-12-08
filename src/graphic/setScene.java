@@ -1,4 +1,5 @@
 package graphic;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -15,10 +16,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class setScene extends HomeGraphicInterface{
+	
+	private static setScene instance = null;
 	
 	public void setHome() {
 		frame.repaint();
@@ -168,21 +172,31 @@ public class setScene extends HomeGraphicInterface{
 		btnLoginPanel.setBackground(Color.WHITE);
 		btnLoginPanel.setMaximumSize(new Dimension(75, 15));
 		panel.add(btnLoginPanel);
+		panel.add(Box.createRigidArea(new Dimension(0,30)));
 		
-			
+		JLabel or = new JLabel("Or");
+		panel.add(or, BorderLayout.CENTER);
+		panel.add(Box.createRigidArea(new Dimension(0,30)));
+		
 		JPanel registrationPanel = new JPanel();
 		registrationPanel.setBackground(Color.WHITE);
-		JLabel registration = new JLabel("Registration");
-		registration.setFont(new Font("Verdana", Font.PLAIN, 18));		
-		registration.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		registration.addMouseListener(new MouseAdapter() {
-			 public void mouseClicked(MouseEvent e) {
-				//setFont(savedRoutes);
-				System.out.println("registration clicked");
-			    }
-		});	
-		registrationPanel.add(registration);
+		JButton btnRegistration = new JButton("Registration");
+		
+		registrationPanel.add(btnRegistration, BorderLayout.CENTER);
+		registrationPanel.setBackground(Color.WHITE);
 		panel.add(registrationPanel);
+	}
+	
+	public synchronized setScene getSingletonInstance() {
+		if (setScene.instance == null)
+			setScene.instance = new setScene();		
+		return instance;
+	}
+
+
+	public void setResult() {
+		
+		
 	}
 	
 //	label = new JLabel();

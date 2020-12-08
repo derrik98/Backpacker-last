@@ -16,7 +16,7 @@
 	<td height="15"></td>
 	<table width=100%>
 			<th> &nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp"><u>Result</u></a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
-			<div style="float: right; text-align: right;">Login &nbsp;</div></th>
+			<div style="float: right; text-align: right;"><a href="LoginPage.jsp">Login</a> &nbsp;</div></th>
 	</table>
 	
 	<br>

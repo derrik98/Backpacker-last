@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+<!--  dichiarazione e istanziazione di un loginBean !-->
+<jsp:useBean id="HomePage" scope="request" class="graphic.HomeGraphicInterface"/>
+
+<!--  mappare attributi di un oggetto sui campi della form  !-->
+<jsp:setProperty name="HomePage" property="*" />
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -17,7 +24,7 @@
 	<table width=100%>
 			<td height="15"></td>
 			<th>&nbsp; <a href="HomePage.jsp"><u>Home</u></a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
-			<div style="float: right; text-align: right;">Login &nbsp;</div></th>
+			<div style="float: right; text-align: right;"><a href="LoginPage.jsp">Login</a> &nbsp;</div></th>
 	</table>
 
 	<br>
@@ -26,14 +33,17 @@
 	<form>
 	<table align="center">
 	<tr>
+		
 			<td>seleziona Stato &nbsp;</td>
 			<td>
 				<select name="Continente" size="1">
-				<option>Italia</option>
-				<option>Francia</option>
-				<option>Spagna</option>
-				<option>Germania</option>
-				<option>Oceania</option>
+			
+			<%
+			    for(int j=0; j<HomePage.addCountry().size(); j++) {
+			        out.println("<option>" + HomePage.addCountry().get(j) + "</option>");
+			    }
+			%>
+
 			</select></td>
 	</tr>
 	<td height="15"></td>

@@ -14,6 +14,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -55,9 +59,12 @@ public class HomeGraphicInterface extends Application{
 	protected static JLabel Home;
 	protected static int larghezza;
 	protected static int altezza;
+	public static setScene scene;
 	
 
 	public static void main(String[] args) {
+		scene = new setScene();
+		
 		launch(args);
 	}
 
@@ -97,21 +104,15 @@ public class HomeGraphicInterface extends Application{
 		optionPanel.add(Box.createRigidArea(new Dimension(15,0)));
 				
 		Home = new JLabel("Home");
-		System.out.println("optionPanel, " + optionPanel.getMaximumSize().width);
-		System.out.println("Home, " + Home.getMaximumSize().width);
 		Home.setFont(new Font("Verdana", Font.PLAIN, 18));
 		
 		
 		
 		Home.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		
-
 		Home.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				setFont(Home);
-				
-				new setScene().setHome();
-				System.out.println("Home clicked");
+				scene.getSingletonInstance().setHome();;
 		        }
 		});
 		optionPanel.add(Home);
@@ -124,7 +125,7 @@ public class HomeGraphicInterface extends Application{
 		Result.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Result);
-				 System.out.println("Result clicked");
+				 scene.getSingletonInstance().setResult();
 		        }
 		});
 		optionPanel.add(Result);
@@ -137,9 +138,7 @@ public class HomeGraphicInterface extends Application{
 		Profile.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Profile);
-				 new setScene().setProfile();
-				 
-				 System.out.println("Profile clicked");
+				 scene.getSingletonInstance().setProfile();
 		        }
 		});
 		optionPanel.add(Profile);
@@ -148,18 +147,19 @@ public class HomeGraphicInterface extends Application{
 		JLabel Login = new JLabel("Login");
 		
 		//optionPanel.add(Box.createRigidArea(new Dimension(15,0)));
-		optionPanel.add(Box.createRigidArea(new Dimension((larghezza - Home.getMaximumSize().width - Result.getMaximumSize().width 
-				- Profile.getMaximumSize().width)- Login.getMaximumSize().width -75, 0)));//SISTEMARE
 		Login.setFont(new Font("Verdana", Font.PLAIN, 18));
 		System.out.println("Login, " + Login.getMaximumSize().width);
 		Login.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		Login.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Login);
-				 new setScene().setLogin();
+				 scene.getSingletonInstance().setLogin();
 				 System.out.println("Login clicked");
 		        }
 		});
+		optionPanel.add(Box.createRigidArea(new Dimension((larghezza - Home.getMaximumSize().width - Result.getMaximumSize().width 
+				- Profile.getMaximumSize().width)- Login.getMaximumSize().width -75, 0)));//SISTEMARE
+		
 		optionPanel.add(Login);
 		//optionPanel.add(Box.createRigidArea(new Dimension(15,0)));
 		System.out.println(Login.getHorizontalTextPosition());
@@ -179,17 +179,19 @@ public class HomeGraphicInterface extends Application{
 		countryPanel = new JPanel();
 		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
 		
+		JLabel stringCountry = new JLabel("Country");
+		countryPanel.add(stringCountry);
+		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		
-		
-	    String[] country = { "Select a Country","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
-
-	    final JComboBox<String> cou = new JComboBox<String>(country);
-
+		List<String> country = addCountry();
+		String[] lineArray = country.toArray(new String[]{});
+	    final JComboBox<String> cou = new JComboBox<String>(lineArray);
+	    
 	    cou.setVisible(true);
 	    countryPanel.add(cou);
 	    countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 	    	    
-	    countryPanel.setMaximumSize(new Dimension(larghezza/4, cou.getHeight()));
+	    countryPanel.setMaximumSize(new Dimension(larghezza/2, cou.getHeight()));
 	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    countryPanel.setBackground(Color.WHITE);
 	    panel.add(countryPanel);
@@ -251,7 +253,28 @@ public class HomeGraphicInterface extends Application{
 			
 		
 	}
+
+	public List<String> addCountry() throws IOException {
+		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\eclipse-workspace\\BackPacker\\resources\\Paesi.txt"));
+	    List<String> country = new ArrayList<String>();
+	    	try {
+	    	  String line = null;
+	    	  while (( line = input.readLine()) != null){
+	    	    country.add(line);
+	    	  }
+	    	}
+
+	    	catch (FileNotFoundException e) {
+	    	    System.err.println("Error, file " + "C:\\Users\\danie\\eclipse-workspace\\BackPacker\\resources\\Paesi.txt" + " didn't exist.");
+	    	}
+	    	finally {
+	    	    input.close();
+	    	} 
+	   
+	    return country;
 		
+	}
+
 	protected void setFont(JLabel label) {
 		for(int i = 0; i <= optionPanel.getComponentCount()-1; i++) {
 			if(optionPanel.getComponent(i) instanceof JLabel){

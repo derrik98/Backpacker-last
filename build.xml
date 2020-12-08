@@ -48,13 +48,11 @@
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="resources">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -88,11 +86,6 @@
         <antcall target="build"/>
     </target>
     <target name="HomeGraphicInterface (1)">
-        <java classname="HomeGraphicInterface" failonerror="true" fork="yes">
-            <classpath refid="BackPacker.classpath"/>
-        </java>
-    </target>
-    <target name="HomeGraphicInterface (2)">
         <java classname="graphic.HomeGraphicInterface" failonerror="true" fork="yes">
             <classpath refid="BackPacker.classpath"/>
         </java>
