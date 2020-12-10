@@ -56,10 +56,6 @@ public class setScene extends HomeGraphicInterface{
         JFrame.setDefaultLookAndFeelDecorated(true);
         panel.removeAll();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-//        countryPanel.setVisible(false);
-//        cityPanel.setVisible(false);
-//        addressPanel.setVisible(false);
-//        searchPanel.setVisible(false);
         panel.add(imagePanel);
         panel.add(Box.createRigidArea(new Dimension(0,5)));
        // optionPanel.setMaximumSize(new Dimension(larghezza, Home.getMaximumSize().height+5));
@@ -68,9 +64,10 @@ public class setScene extends HomeGraphicInterface{
        
 				
 		profilePanel = new JPanel();
+		
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.Y_AXIS));
 		
-		JPanel subOptionPanel = new JPanel();
+		subOptionPanel = new JPanel();
 		subOptionPanel.setLayout(new BoxLayout(subOptionPanel, BoxLayout.X_AXIS));		
 		JLabel savedRoutes = new JLabel("savedRoutes");
 		savedRoutes.setFont(new Font("Verdana", Font.PLAIN, 18));		
@@ -83,19 +80,7 @@ public class setScene extends HomeGraphicInterface{
 		});	
 		subOptionPanel.add(savedRoutes);
 		subOptionPanel.add(Box.createRigidArea(new Dimension(15,0)));
-		
-//		JLabel favouritesFood = new JLabel("Favourites Food");
-//		favouritesFood.setFont(new Font("Verdana", Font.PLAIN, 18));
-//		
-//		favouritesFood.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//
-//		favouritesFood.addMouseListener(new MouseAdapter() {
-//			 public void mouseClicked(MouseEvent e) {
-//				setFont(favouritesFood);
-//				System.out.println("Home clicked");
-//		        }
-//		});	
-//		subOptionPanel.add(favouritesFood);
+
 		subOptionPanel.add(Box.createRigidArea(new Dimension(15,0)));		
 		JLabel settings = new JLabel("Settings");
 		settings.setFont(new Font("Verdana", Font.PLAIN, 18));	
@@ -103,7 +88,8 @@ public class setScene extends HomeGraphicInterface{
 
 		settings.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
-				setFont(settings);				
+				setFont(settings);	
+				setSettings();
 				System.out.println("Home clicked");
 		        }
 		});
@@ -112,11 +98,11 @@ public class setScene extends HomeGraphicInterface{
 		profilePanel.add(Box.createRigidArea(new Dimension(0,10)));
 		profilePanel.add(subOptionPanel);
 		
-		JPanel informationPanel = new JPanel();
+		informationPanel = new JPanel();
 		informationPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
-		profilePanel.add(Box.createRigidArea(new Dimension(0,15)));
 		profilePanel.add(informationPanel);
+		
+	
 		panel.add(profilePanel);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -185,6 +171,55 @@ public class setScene extends HomeGraphicInterface{
 		registrationPanel.add(btnRegistration, BorderLayout.CENTER);
 		registrationPanel.setBackground(Color.WHITE);
 		panel.add(registrationPanel);
+	}
+	
+	
+	public void setSettings() {
+		frame.repaint();
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        panel.removeAll();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(imagePanel);
+        panel.add(Box.createRigidArea(new Dimension(0,5)));
+        panel.add(optionPanel);
+        panel.add(Box.createRigidArea(new Dimension(0,15)));
+       
+				
+		profilePanel = new JPanel();
+		profilePanel.setMaximumSize(new Dimension(larghezza/2, altezza - imagePanel.getMaximumSize().height-optionPanel.getMaximumSize().height-175));
+		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.Y_AXIS));
+		
+
+		profilePanel.add(subOptionPanel);
+		
+		informationPanel = new JPanel();
+		informationPanel.setMaximumSize(new Dimension(profilePanel.getMaximumSize().width, profilePanel.getMaximumSize().height));
+		informationPanel.setLayout(new BoxLayout(informationPanel, BoxLayout.Y_AXIS));
+		informationPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		 JLabel name = new JLabel("name");
+//		   // login.setVisible(true);
+		    informationPanel.add(name);
+				//profilePanel.add(name);	
+			//
+			
+			JLabel surname = new JLabel("surname");
+			informationPanel.add(surname);
+			//profilePanel.add(surname);
+			JLabel email = new JLabel("E-mail");
+			
+			informationPanel.add(email);
+		//profilePanel.add(email);
+		//profilePanel.add(Box.createRigidArea(new Dimension(0,15)));
+		informationPanel.setBackground(Color.WHITE);
+		profilePanel.add(informationPanel);
+		profilePanel.add(Box.createRigidArea(new Dimension(0,15)));
+		panel.add(profilePanel);
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setVisible(true);
+		
 	}
 	
 	public synchronized setScene getSingletonInstance() {

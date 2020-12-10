@@ -39,6 +39,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import Controller.InterfaceBean;
+
 public class HomeGraphicInterface extends Application{
 	
 	protected static JFrame frame;
@@ -53,13 +55,15 @@ public class HomeGraphicInterface extends Application{
 	protected static JPanel searchPanel;
 	protected static JPanel profilePanel;
 	protected static JPanel subOptionPanel;
-	protected static JPanel InformationPanel;
+	protected static JPanel informationPanel;
 	protected static JPanel usernamePanel;
 	protected static JPanel passwordPanel;
 	protected static JLabel Home;
 	protected static int larghezza;
 	protected static int altezza;
 	public static setScene scene;
+	public static String country;
+	public static String city;
 	
 
 	public static void main(String[] args) {
@@ -183,9 +187,10 @@ public class HomeGraphicInterface extends Application{
 		countryPanel.add(stringCountry);
 		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		
-		List<String> country = addCountry();
-		String[] lineArray = country.toArray(new String[]{});
+		List<String> countryList = addCountry();
+		String[] lineArray = countryList.toArray(new String[]{});
 	    final JComboBox<String> cou = new JComboBox<String>(lineArray);
+	   
 	    
 	    cou.setVisible(true);
 	    countryPanel.add(cou);
@@ -203,10 +208,11 @@ public class HomeGraphicInterface extends Application{
 		
 		
 		
-	    String[] city = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
+	    String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 
-	    final JComboBox<String> cit = new JComboBox<String>(city);
-
+	    final JComboBox<String> cit = new JComboBox<String>(cityList);
+	    
+	    
 	    cit.setVisible(true);
 	    cityPanel.add(cit);
 	    cityPanel.add(Box.createRigidArea(new Dimension(5,0)));
@@ -235,6 +241,16 @@ public class HomeGraphicInterface extends Application{
 		///////////////////////////////////////
 		searchPanel = new JPanel();
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				InterfaceBean interfaceBean = new InterfaceBean();
+				city = (String) cit.getSelectedItem();
+				country = (String) cou.getSelectedItem();
+				interfaceBean.validate();				
+			}
+		});
 		
 		searchPanel.add(btnSearch);
 		searchPanel.setBackground(Color.WHITE);

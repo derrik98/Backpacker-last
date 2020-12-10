@@ -38,21 +38,40 @@
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat7-websocket.jar"/>
         <pathelement location="../apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/websocket-api.jar"/>
     </path>
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.2.0.v20190826-0900.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.1.0.v20190826-0900.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.13.0.v20200204-1500.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
     <path id="BackPacker.classpath">
         <pathelement location="build/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="resources">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
