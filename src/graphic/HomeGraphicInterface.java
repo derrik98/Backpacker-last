@@ -39,7 +39,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import Controller.InterfaceBean;
+import control.InterfaceBean;
 
 public class HomeGraphicInterface extends Application{
 	

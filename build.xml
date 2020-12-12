@@ -65,13 +65,26 @@
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="resources">
-                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="boundary">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="control">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="entity">
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -87,6 +100,9 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <src path="resources"/>
+            <src path="boundary"/>
+            <src path="control"/>
+            <src path="entity"/>
             <classpath refid="BackPacker.classpath"/>
         </javac>
     </target>
@@ -106,6 +122,16 @@
     </target>
     <target name="HomeGraphicInterface (1)">
         <java classname="graphic.HomeGraphicInterface" failonerror="true" fork="yes">
+            <classpath refid="BackPacker.classpath"/>
+        </java>
+    </target>
+    <target name="JavaMysqlPreparedStatementInsertExample">
+        <java classname="entity.JavaMysqlPreparedStatementInsertExample" failonerror="true" fork="yes">
+            <classpath refid="BackPacker.classpath"/>
+        </java>
+    </target>
+    <target name="UserDB">
+        <java classname="entity.UserDB" failonerror="true" fork="yes">
             <classpath refid="BackPacker.classpath"/>
         </java>
     </target>

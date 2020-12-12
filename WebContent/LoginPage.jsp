@@ -1,6 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+<!--  dichiarazione e istanziazione di un loginBean !-->
+<jsp:useBean id="loginBean" scope="request" class="control.LoginBean"/>
+
+<!--  mappare attributi di un oggetto sui campi della form  !-->
+<jsp:setProperty name="loginBean" property="*" />
+
+<%
+	if(request.getParameter("Login")!=null){
+		if(loginBean.validate()) { 
+%>
+		<jsp:forward page="HomePage.jsp"/>
+<%
+		}
+		else {
+%>
+		<p style="color: red">Dati errati</p>
+<%
+		}
+	}
+%>
+
+
 <html>
 <head>
 	<meta charset="ISO-8859-1">
