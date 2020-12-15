@@ -8,20 +8,28 @@
 <!--  mappare attributi di un oggetto sui campi della form  !-->
 <jsp:setProperty name="loginBean" property="*" />
 
+
+
 <%
-	if(request.getParameter("Login")!=null){
-		if(loginBean.validate()) { 
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//String name = request.getParameter("username");
+		//String password = request.getParameter("password");
+		//System.out.println(name);
+
+ 	if(request.getParameter("login")!=null){
+ 		if(loginBean.validate()) { 
 %>
 		<jsp:forward page="HomePage.jsp"/>
 <%
-		}
-		else {
+ 		}
+ 		else {
 %>
 		<p style="color: red">Dati errati</p>
 <%
-		}
+ 		}
+ 	}
 	}
-%>
+ %>
 
 
 <html>
@@ -61,7 +69,7 @@
 			<br>
 			<div class="row">
 				<div align="center">
-					<input type="submit" name="Login" value="Login">
+					<input type="submit" name="login" value="login">
 				</div>
 			</div>
 			<br>

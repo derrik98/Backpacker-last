@@ -16,16 +16,20 @@ public class LoginController {
         return INSTANCE;
     }
 
-    public LoginBean login(String username, String password) {
+    public LoginBean login(String username, String password) throws Exception {
         // Esegui accesso al DB per verificare se username e password sono corretti
         // Se sono corretti allora restituisci nome e cognome
-        LoginBean loginBean;
-        //if (Math.random() > 0.5) {
-        if(username == UserDB.username && password == UserDB.password) {
+    	//System.out.println(username+password);
+    	LoginBean loginBean;
+        UserDB userdb = new UserDB("C:\\Users\\danie\\Dropbox\\Il mio PC (DESKTOP-5PBHKRJ)\\Desktop"
+        		+ "\\ProgettoISPW\\trunk\\resources\\userDB.txt");
+        //System.out.println(userdb.toString());
+        if(userdb.checkCredential(username, password) == true) {
         	loginBean = new LoginBean();
-            loginBean.setNome("Mario");
-            loginBean.setCognome("Rossi");
-        } else {
+        	loginBean.setUsername(username);
+        	loginBean.setPassword(password);
+        }
+        else {
             loginBean = null;
         }
         // Altrimenti restituisci null

@@ -1,5 +1,6 @@
 package Controller;
 
+import entity.UserDB;
 import graphic.HomeGraphicInterface;
 
 public class SearchController {
@@ -16,17 +17,20 @@ public class SearchController {
         return INSTANCE;
     }
 
-    public InterfaceBean getInput(String country, String city, String address) {
+    public InterfaceBean getInput(String username, String password) throws Exception {
         // Esegui accesso al DB per verificare se username e password sono corretti
         // Se sono corretti allora restituisci nome e cognome
         InterfaceBean interfaceBean;
+        UserDB userdb = new UserDB("resources\\userDB.txt");
         //if (Math.random() > 0.1) {
-            interfaceBean = new InterfaceBean();
-            interfaceBean.setCountry(HomeGraphicInterface.country);
-            interfaceBean.setCity(HomeGraphicInterface.city);
-       // } else {
+        if(userdb.checkCredential(username, password) == true) {
+        	interfaceBean = new InterfaceBean();
+          interfaceBean.setCountry(HomeGraphicInterface.country);
+         interfaceBean.setCity(HomeGraphicInterface.city);
+        }
+        else {
             interfaceBean = null;
-        //}
+        }
         // Altrimenti restituisci null
         return interfaceBean;
 

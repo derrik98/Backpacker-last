@@ -39,21 +39,21 @@ public class InterfaceBean {
 	}
 	
 	
-	public boolean validate() {
-        // controllo sintattico
-        if (country == "" || city == "" || address == null) {
-            return false;
-        }
+//	public boolean validate() {
+//        // controllo sintattico
+//        if (country == "" || city == "" || address == null) {
+//            return false;
+//        }
+//
+//       // InterfaceBean datiCorretti = SearchController.getInstance().getInput(country, city, address);
+//        //System.out.println(city);
+//       // System.out.println(country);
+//        /*if(utenteTrovato==null)
+//            return false;
+//        return true;*/
+//        return datiCorretti != null;
 
-        InterfaceBean datiCorretti = SearchController.getInstance().getInput(country, city, address);
-        //System.out.println(city);
-       // System.out.println(country);
-        /*if(utenteTrovato==null)
-            return false;
-        return true;*/
-        return datiCorretti != null;
-
-    }
+ //   }
 	
 
 }

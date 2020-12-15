@@ -2,14 +2,14 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <!--  dichiarazione e istanziazione di un loginBean !-->
-<jsp:useBean id="loginBean" scope="request" class="jspexample.LoginBean"/>
+<jsp:useBean id="loginBea" scope="request" class="jspexample.LoginBea"/>
 
 <!--  mappare attributi di un oggetto sui campi della form  !-->
-<jsp:setProperty name="loginBean" property="*" />
+<jsp:setProperty name="loginBea" property="*" />
 
 <%
 	if(request.getParameter("login")!=null){
-		if(loginBean.validate()) { 
+		if(loginBea.validate()) { 
 %>
 		<jsp:forward page="RiassuntoLogin.jsp"/>
 <%

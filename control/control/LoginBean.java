@@ -43,16 +43,16 @@ public class LoginBean {
 	        this.cognome = cognome;
 	    }
 
-	    public boolean validate() {
+	    public boolean validate() throws Exception {
 	        // controllo sintattico
 	        if (username == null || username == "" || password == null || password == "") {
 	            return false;
 	        }
-
+	        System.out.println(username + password);
 	        LoginBean utenteTrovato = LoginController.getInstance().login(username, password);
-	        /*if(utenteTrovato==null)
-	            return false;
-	        return true;*/
+//	        if(utenteTrovato==null)
+//	            return false;
+//	        return true;
 	        return utenteTrovato != null;
 
 	    }
