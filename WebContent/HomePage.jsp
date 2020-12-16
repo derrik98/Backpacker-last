@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <!--  dichiarazione e istanziazione di un loginBean !-->
-<jsp:useBean id="HomePage" scope="request" class="graphic.HomeGraphicInterface"/>
+<jsp:useBean id="HomePage" scope="request" class="boundary.desktop.HomeGraphicInterface"/>
 
 <!--  mappare attributi di un oggetto sui campi della form  !-->
 <jsp:setProperty name="HomePage" property="*" />

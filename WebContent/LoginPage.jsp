@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <!--  dichiarazione e istanziazione di un loginBean !-->
-<jsp:useBean id="loginBean" scope="request" class="control.LoginBean"/>
+<jsp:useBean id="loginBean" scope="request" class="controller.LoginBean"/>
 
 <!--  mappare attributi di un oggetto sui campi della form  !-->
 <jsp:setProperty name="loginBean" property="*" />
