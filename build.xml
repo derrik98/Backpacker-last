@@ -3,88 +3,85 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BackPacker">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BackPacke">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../../eclipse/jee-2019-12/eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../eclipse/jee-2020-09/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="Web App Libraries.libraryclasspath"/>
     <path id="EAR Libraries.libraryclasspath"/>
     <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/annotations-api.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/catalina-ant.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/catalina-ha.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/catalina-tribes.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/catalina.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/ecj-4.4.2.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/el-api.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/jasper-el.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/jasper.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/jsp-api.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/servlet-api.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-api.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-de.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-ja.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-ko.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-ru.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-i18n-zh-CN.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-jdbc.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat-util.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/tomcat7-websocket.jar"/>
-        <pathelement location="../../../../../eclipse-workspace/apache-tomcat-7.0.107/apache-tomcat-7.0.107/lib/websocket-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/catalina.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/ecj-4.4.2.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/el-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/jasper.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/tomcat7-websocket.jar"/>
+        <pathelement location="../../../../../../eclipse-workspace/apache-tomcat-7.0.107-windows-x64/apache-tomcat-7.0.107/lib/websocket-api.jar"/>
     </path>
     <path id="JUnit 5.libraryclasspath">
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.jupiter.api_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.jupiter.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.jupiter.params_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.platform.commons_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.platform.engine_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.platform.launcher_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.platform.runner_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.platform.suite.api_1.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit.vintage.engine_5.5.1.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.opentest4j_1.2.0.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.apiguardian_1.1.0.v20190826-0900.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
-        <pathelement location="../../../../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.jupiter.api_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.jupiter.engine_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.jupiter.params_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.platform.commons_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.platform.engine_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.platform.launcher_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.platform.runner_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.platform.suite.api_1.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit.vintage.engine_5.6.0.v20200203-2009.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.opentest4j_1.2.0.v20190826-0900.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.apiguardian_1.1.0.v20190826-0900.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.junit_4.13.0.v20200204-1500.jar"/>
+        <pathelement location="../../../../../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
     </path>
-    <path id="BackPacker.classpath">
+    <path id="MySQL JDBC Driver.libraryclasspath">
+        <pathelement location="../../../../../../Downloads/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar"/>
+    </path>
+    <path id="BackPacke.classpath">
         <pathelement location="build/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
         <path refid="JUnit 5.libraryclasspath"/>
+        <path refid="MySQL JDBC Driver.libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="resources">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
-            <fileset dir="boundary">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="build/classes">
-            <fileset dir="control">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="build/classes">
-            <fileset dir="entity">
+            <fileset dir="logic">
+                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -100,10 +97,8 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
             <src path="resources"/>
-            <src path="boundary"/>
-            <src path="control"/>
-            <src path="entity"/>
-            <classpath refid="BackPacker.classpath"/>
+            <src path="logic"/>
+            <classpath refid="BackPacke.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -120,14 +115,24 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="HomeGraphicInterface">
-        <java classname="graphic.HomeGraphicInterface" failonerror="true" fork="yes">
-            <classpath refid="BackPacker.classpath"/>
+    <target name="HomeGraphicInterface (1)">
+        <java classname="boundary.desktop.HomeGraphicInterface" failonerror="true" fork="yes">
+            <classpath refid="BackPacke.classpath"/>
+        </java>
+    </target>
+    <target name="JavaMysqlPreparedStatementInsertExample">
+        <java classname="entity.JavaMysqlPreparedStatementInsertExample" failonerror="true" fork="yes">
+            <classpath refid="BackPacke.classpath"/>
+        </java>
+    </target>
+    <target name="User">
+        <java classname="entity.User" failonerror="true" fork="yes">
+            <classpath refid="BackPacke.classpath"/>
         </java>
     </target>
     <target name="UserDB">
         <java classname="entity.UserDB" failonerror="true" fork="yes">
-            <classpath refid="BackPacker.classpath"/>
+            <classpath refid="BackPacke.classpath"/>
         </java>
     </target>
 </project>
