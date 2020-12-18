@@ -1,4 +1,4 @@
-package entity;
+ackage entity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
