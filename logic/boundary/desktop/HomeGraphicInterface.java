@@ -287,7 +287,7 @@ public class HomeGraphicInterface extends Application{
 	}
 
 	public List<String> addCountry() throws IOException {
-		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt"));
+		BufferedReader input = new BufferedReader(new FileReader("resources\\Paesi.txt"));
 	    List<String> country = new ArrayList<String>();
 	    	try {
 	    	  String line = null;
@@ -297,7 +297,7 @@ public class HomeGraphicInterface extends Application{
 	    	}
 
 	    	catch (FileNotFoundException e) {
-	    	    System.err.println("Error, file " + "C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt" + " didn't exist.");
+	    	    System.err.println("Error, file " + "resources\\Paesi.txt" + " didn't exist.");
 	    	}
 	    	finally {
 	    		input.close();
