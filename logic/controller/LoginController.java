@@ -21,7 +21,7 @@ public class LoginController {
         // Se sono corretti allora restituisci nome e cognome
     	//System.out.println(username+password);
     	LoginBean loginBean;
-        UserDB userdb = new UserDB("resources\\userDB.txt");
+        UserDB userdb = new UserDB("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\userDB.txt");
         System.out.println(userdb.toString());
         if(userdb.checkCredential(username, password) == true) {
         	loginBean = new LoginBean();
