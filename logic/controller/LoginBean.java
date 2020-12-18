@@ -2,11 +2,10 @@ package controller;
 
 public class LoginBean {
 
-	 	private String email;
-	    private String password;
-
 	    private String nome;
 	    private String cognome;
+	    private String password;
+	    private String email;
 
 	    public LoginBean() {
 	    }
@@ -47,11 +46,11 @@ public class LoginBean {
 	        // controllo sintattico
 	    	System.out.println("loginbean" + email + password);
 	    	
-	        if (email == null || email == "" || password == null || password == "") {
+	        if (email == null || email.equals("") || password.equals(null) || password.equals("")) {
 	            return false;
 	        }
 	        System.out.println(email + password);
-	        LoginBean utenteTrovato = LoginController.getInstance().login(email, password);
+	        LoginBean utenteTrovato = LoginController.getInstance().login(password, email);
 //	        if(utenteTrovato==null)
 //	            return false;
 //	        return true;

@@ -80,7 +80,7 @@ public class User {
 				System.out.println(user1.toString());			
 				}
 			
-			UserDAO.addUser(user);
+			//UserDAO.addUser(user);
 			//UserDAO.removeUserById(user);
 		} catch (SQLException se) {
 			// Errore durante l'apertura della connessione

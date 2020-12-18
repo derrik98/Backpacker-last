@@ -12,7 +12,7 @@ public class Queries {
     }
 
     public static ResultSet selectUserIds(Statement stmt) throws SQLException  {
-        String sql = "SELECT DISTINCT id FROM user ;";
+        String sql = "SELECT DISTINCT email FROM user ;";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }

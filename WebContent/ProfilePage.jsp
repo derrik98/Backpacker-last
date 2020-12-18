@@ -1,6 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+<!--  dichiarazione e istanziazione di un loginBean !-->
+<jsp:useBean id="registerBean" scope="request" class="controller.RegisterBean"/>
+
+<!--  mappare attributi di un oggetto sui campi della form  !-->
+<jsp:setProperty name="registerBean" property="*" />
+
+
+<%
+	if(request.getMethod().equalsIgnoreCase("POST")){
+		//String name = request.getParameter("username");
+		//String password = request.getParameter("password");
+		//System.out.println(name);
+
+ 	if(request.getParameter("login")!=null){
+ 		if(registerBean.validate()) { 
+%>
+		<jsp:forward page="HomePage.jsp"/>
+<%
+ 		}
+ 		else {
+%>
+		<p style="color: red">Profilo non creato</p>
+<%
+ 		}
+ 	}
+	}
+ %>
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -12,8 +41,9 @@
 </head>
 <body>
 	<img src="oggetti.jpg" width=100% height=300px alt="Mia Immagine">
-	<td height="15"></td>
+	
 	<table width=100%>
+			<td height="40"></td>
 			<th> &nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp"><u>Profile</u></a>
 			<div style="float: right; text-align: right;"><a href="LoginPage.jsp">Login</a> &nbsp;</div></th>
 	</table>

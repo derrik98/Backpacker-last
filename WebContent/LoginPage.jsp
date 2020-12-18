@@ -9,7 +9,6 @@
 <jsp:setProperty name="loginBean" property="*" />
 
 
-
 <%
 	if(request.getMethod().equalsIgnoreCase("POST")){
 		//String name = request.getParameter("username");
@@ -45,7 +44,7 @@
 	<img src="oggetti.jpg" width=100% height=300px alt="Mia Immagine">
 	
 	<table width=100%>
-			<td height="15"></td>
+			<td height="40"></td>
 			<th>&nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
 			<div style="float: right; text-align: right;"><a href="LoginPage.jsp"><u>Login</u></a> &nbsp;</div></th>
 	</table>
@@ -80,8 +79,8 @@
 			</div>
 			<br>
 			<div class="row">
-				<div align="center">
-					<input type="submit" name="Create your account" value="Create your account">
+				<div align="center"> 					
+					<input type="button" value="Create your account" onclick="location.href='RegistrationPage.jsp';" />
 				</div>
 			</div>
 		</form>

@@ -13,8 +13,9 @@
 <body>
 
 	<img src="oggetti.jpg" width=100% height=300px alt="Mia Immagine">
-	<td height="15"></td>
+	
 	<table width=100%>
+			<td height="40"></td>
 			<th> &nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp"><u>Result</u></a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
 			<div style="float: right; text-align: right;"><a href="LoginPage.jsp">Login</a> &nbsp;</div></th>
 	</table>

@@ -38,8 +38,9 @@ public class UserDAO {
             //ResultSet rs = Queries.selectUserIds(stmt);
 
             if (!rs.first()){ // rs empty
-            	Exception e = new Exception("No User Found matching with name: "+ username);
-            	throw e;
+            	return listOfUser;
+            	//Exception e = new Exception("No User Found matching with name: "+ username);
+            	//throw e;
             }
             
             // riposizionamento del cursore
@@ -99,10 +100,10 @@ public class UserDAO {
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Queries.selectUserIds(stmt);
             while (rs.next()) {
-                // lettura delle colonne "by name"
-                int userId = rs.getInt("id");
+                //lettura delle colonne "by name"
+                String userId = rs.getString("email");
                 System.out.println("Found UserId: "+ userId);
-                if (userId == user.getId()){
+                if (userId == user.getEmail()){
                 	DuplicatedRecordException e = new DuplicatedRecordException("Duplicated Instance ID. Id "+ userId + " was already assigned");
                 	throw e;                	
                 }
