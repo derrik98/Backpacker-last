@@ -35,9 +35,10 @@ public class UserDAO {
                     ResultSet.CONCUR_READ_ONLY);
             
             ResultSet rs = Queries.selectUserByName(stmt, username);
+            //ResultSet rs = Queries.selectUserIds(stmt);
 
             if (!rs.first()){ // rs empty
-            	Exception e = new Exception("No Album Found matching with name: "+ username);
+            	Exception e = new Exception("No User Found matching with name: "+ username);
             	throw e;
             }
             
@@ -45,12 +46,15 @@ public class UserDAO {
             rs.first();
             do{
                 // lettura delle colonne "by name"
-                String user = rs.getString("name");
-                int id = rs.getInt("id");
-                String email = rs.getString("email");
-                System.out.println(user + id + email);
                 
-                User a = new User(user, user);
+                //int id = rs.getInt("id");
+                String user = rs.getString("name");
+                String surname = rs.getString("surname");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                System.out.println(user  + email);
+                
+                User a = new User(user, surname, password, email);
                 
                 listOfUser.add(a);
 

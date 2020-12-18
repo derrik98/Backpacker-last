@@ -2,7 +2,7 @@ package controller;
 
 public class LoginBean {
 
-	 private String username;
+	 	private String email;
 	    private String password;
 
 	    private String nome;
@@ -12,11 +12,11 @@ public class LoginBean {
 	    }
 
 	    public String getUsername() {
-	        return username;
+	        return email;
 	    }
 
-	    public void setUsername(String username) {
-	        this.username = username;
+	    public void setUsername(String email) {
+	        this.email = email;
 	    }
 
 	    public String getPassword() {
@@ -45,11 +45,13 @@ public class LoginBean {
 
 	    public boolean validate() throws Exception {
 	        // controllo sintattico
-	        if (username == null || username == "" || password == null || password == "") {
+	    	System.out.println("loginbead" + email + password);
+	    	
+	        if (email == null || email == "" || password == null || password == "") {
 	            return false;
 	        }
-	        System.out.println(username + password);
-	        LoginBean utenteTrovato = LoginController.getInstance().login(username, password);
+	        System.out.println(email + password);
+	        LoginBean utenteTrovato = LoginController.getInstance().login(email, password);
 //	        if(utenteTrovato==null)
 //	            return false;
 //	        return true;

@@ -16,7 +16,7 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(String name, String surname, String email, String password) {
+	public User(String name, String surname, String password, String email) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -65,22 +65,23 @@ public class User {
 	
 	@Override
     public String toString(){
-		return this.surname + " \"" + this.password + "\" (" + this.email + this.name + this.id+")";    	
+		return this.surname + " \"" + this.password + "\" (" + this.email + this.name +")";    	
     }
 	
 	public static void main(String args[]) throws Exception {
 
-		User user = new User("Timmy", "Turner", "wanda", "cosmo");
+		User user = new User("Timmy", "Turner", "bise", "bise");
 		//User user = new User("simoa", "dErrco", "biser", "deriiy");
 
 		try {
 			List<User> list = UserDAO.retrieiveByUsername(user.getEmail());
 
 			for (User user1 : list) {
-				System.out.println(user1.toString());			}
+				System.out.println(user1.toString());			
+				}
 			
-			//UserDAO.addUser(user);
-			UserDAO.removeUserById(user);
+			UserDAO.addUser(user);
+			//UserDAO.removeUserById(user);
 		} catch (SQLException se) {
 			// Errore durante l'apertura della connessione
 			se.printStackTrace();

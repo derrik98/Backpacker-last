@@ -1,6 +1,5 @@
 package boundary.desktop;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -12,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,7 +23,6 @@ import java.util.Map;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -33,12 +30,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-
 import controller.InterfaceBean;
 
 public class HomeGraphicInterface extends Application{
@@ -64,6 +57,7 @@ public class HomeGraphicInterface extends Application{
 	public static setScene scene;
 	public static String country;
 	public static String city;
+	
 	
 
 	public static void main(String[] args) {
@@ -116,7 +110,12 @@ public class HomeGraphicInterface extends Application{
 		Home.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				setFont(Home);
-				scene.getSingletonInstance().setHome();;
+				try {
+					new HomePage().setHomePage();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		        }
 		});
 		optionPanel.add(Home);
@@ -129,7 +128,7 @@ public class HomeGraphicInterface extends Application{
 		Result.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Result);
-				 scene.getSingletonInstance().setResult();
+				// scene.getSingletonInstance().setResult();
 		        }
 		});
 		optionPanel.add(Result);
@@ -142,7 +141,8 @@ public class HomeGraphicInterface extends Application{
 		Profile.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Profile);
-				 scene.getSingletonInstance().setProfile();
+				 //scene.getSingletonInstance().setProfile();
+				 new ProfilePage().setProfilePage();
 		        }
 		});
 		optionPanel.add(Profile);
@@ -157,7 +157,8 @@ public class HomeGraphicInterface extends Application{
 		Login.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Login);
-				 scene.getSingletonInstance().setLogin();
+				 //scene.getSingletonInstance().setLogin();
+				 new LoginPage().setLoginPage();
 				 System.out.println("Login clicked");
 		        }
 		});
@@ -178,7 +179,9 @@ public class HomeGraphicInterface extends Application{
 		panel.add(Box.createRigidArea(new Dimension(0,30)));
 		
 	////////////////////////////////////////////////////////////////////////
-		
+		JPanel all = new JPanel();
+		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
+		all.setBackground(Color.WHITE);
 		
 		countryPanel = new JPanel();
 		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
@@ -199,8 +202,11 @@ public class HomeGraphicInterface extends Application{
 	    countryPanel.setMaximumSize(new Dimension(larghezza/2, cou.getHeight()));
 	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    countryPanel.setBackground(Color.WHITE);
-	    panel.add(countryPanel);
-	    panel.add(Box.createRigidArea(new Dimension(0,30)));
+	    //panel.add(countryPanel);
+	    //panel.add(Box.createRigidArea(new Dimension(0,30)));
+	    all.add(countryPanel);
+	    all.add(Box.createRigidArea(new Dimension(0,30)));
+	    
 	    
 	    //////////////////////////////////////////////////////////////////////////
 		cityPanel = new JPanel();
@@ -220,8 +226,12 @@ public class HomeGraphicInterface extends Application{
 	    cityPanel.setMaximumSize(new Dimension(larghezza/4, cit.getHeight()));
 	    cityPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    cityPanel.setBackground(Color.WHITE);
-	    panel.add(cityPanel);
-	    panel.add(Box.createRigidArea(new Dimension(0,30)));
+//	    panel.add(cityPanel);
+//	    panel.add(Box.createRigidArea(new Dimension(0,30)));
+	    all.add(cityPanel);
+	    all.add(Box.createRigidArea(new Dimension(0,30)));
+	    
+	    
 		////////////////////////////////////////////////////////
 	    addressPanel = new JPanel();
 	    
@@ -235,8 +245,10 @@ public class HomeGraphicInterface extends Application{
 		addressPanel.add(textField);
 		addressPanel.setBackground(Color.WHITE);
 		addressPanel.setMaximumSize(new Dimension(larghezza/3, cou.getHeight()));
-		panel.add(addressPanel);
-		panel.add(Box.createRigidArea(new Dimension(0,30)));
+//		panel.add(addressPanel);
+//		panel.add(Box.createRigidArea(new Dimension(0,30)));
+		all.add(addressPanel);
+	    all.add(Box.createRigidArea(new Dimension(0,30)));
 		
 		///////////////////////////////////////
 		searchPanel = new JPanel();
@@ -254,7 +266,11 @@ public class HomeGraphicInterface extends Application{
 		
 		searchPanel.add(btnSearch);
 		searchPanel.setBackground(Color.WHITE);
-		panel.add(searchPanel);
+		//panel.add(searchPanel);
+		all.add(searchPanel);
+		
+		panel.add(all);
+	    
 		
 		
 		panel.setBackground(Color.WHITE);

@@ -25,11 +25,13 @@ public class LoginController {
         System.out.println(userdb.toString());
         if(userdb.checkCredential(username, password) == true) {
         	loginBean = new LoginBean();
-        	loginBean.setUsername(username);
-        	loginBean.setPassword(password);
+        	System.out.println("utente trovato");
+        	//loginBean.setUsername(username);
+        	//loginBean.setPassword(password);
         }
         else {
             loginBean = null;
+            System.out.println("utente non trovato");
         }
         // Altrimenti restituisci null
         return loginBean;
