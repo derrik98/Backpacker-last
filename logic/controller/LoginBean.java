@@ -45,7 +45,7 @@ public class LoginBean {
 
 	    public boolean validate() throws Exception {
 	        // controllo sintattico
-	    	System.out.println("loginbead" + email + password);
+	    	System.out.println("loginbean" + email + password);
 	    	
 	        if (email == null || email == "" || password == null || password == "") {
 	            return false;
