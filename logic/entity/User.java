@@ -70,7 +70,7 @@ public class User {
 	
 	public static void main(String args[]) throws Exception {
 
-		User user = new User("Timmy", "Turner", "bise", "bise");
+		User user = new User("Timmy", "Turner", "bise", "bise@alice.it");
 		//User user = new User("simoa", "dErrco", "biser", "deriiy");
 
 		try {
@@ -80,7 +80,7 @@ public class User {
 				System.out.println(user1.toString());			
 				}
 			
-			//UserDAO.addUser(user);
+			UserDAO.addUser(user);
 			//UserDAO.removeUserById(user);
 		} catch (SQLException se) {
 			// Errore durante l'apertura della connessione

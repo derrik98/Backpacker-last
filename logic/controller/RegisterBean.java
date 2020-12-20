@@ -2,55 +2,64 @@ package controller;
 
 public class RegisterBean {
 
-	private String nome;
-    private String cognome;
+	private String name;
+    private String surname;
     private String password;
     private String email;
 
     public RegisterBean() {
     }
 
-    public String getUsername() {
-        return email;
-    }
 
-    public void setUsername(String email) {
-        this.email = email;
-    }
+    public String getName() {
+		return name;
+	}
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public String getSurname() {
+		return surname;
+	}
 
-    public String getCognome() {
-        return cognome;
-    }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
-    public boolean validate() throws Exception {
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public boolean validate() throws Exception {
         // controllo sintattico
-    	System.out.println("loginbean" + email + password);
+    	System.out.println("registerbean " + email + password);
     	
-        if (email == null || email.equals("") || password.equals(null) || password.equals("") || nome.equals("") || cognome.equals("")) {
+        if (email == null || email.equals("") || password.equals(null) || password.equals("") || name.equals("") || surname.equals("")) {
             return false;
         }
         System.out.println(email + password);
-        LoginBean utenteTrovato = RegisterController.getInstance().createProfile(nome, cognome, password, email);
+        RegisterBean utenteTrovato = RegisterController.getInstance().createProfile(name, surname, password, email);
 //        if(utenteTrovato==null)
 //            return false;
 //        return true;

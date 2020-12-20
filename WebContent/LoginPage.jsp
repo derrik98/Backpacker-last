@@ -80,7 +80,7 @@
 			<br>
 			<div class="row">
 				<div align="center"> 					
-					<input type="button" value="Create your account" onclick="location.href='RegistrationPage.jsp';" />
+					<input type="button" value="Create your account" onclick="location.href='RegisterPage.jsp';" />
 				</div>
 			</div>
 		</form>

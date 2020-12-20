@@ -20,14 +20,14 @@ public class RegisterController {
     }
     
 
-	public LoginBean createProfile(String nome, String cognome, String password, String email) throws Exception {
-		LoginBean loginBean;
+	public RegisterBean createProfile(String nome, String cognome, String password, String email) throws Exception {
+		RegisterBean loginBean;
 //      UserDB userdb = new UserDB("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\userDB.txt");
 //      System.out.println(userdb.toString());
 //      if(userdb.checkCredential(email, password) == true) {
-      	loginBean = new LoginBean();
+      	loginBean = new RegisterBean();
 //      	System.out.println("utente trovato");
-      	loginBean.setUsername(email);
+      	loginBean.setEmail(email);
       	loginBean.setPassword(password);
 //      }
 //      else {

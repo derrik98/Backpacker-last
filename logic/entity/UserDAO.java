@@ -103,7 +103,8 @@ public class UserDAO {
                 //lettura delle colonne "by name"
                 String userId = rs.getString("email");
                 System.out.println("Found UserId: "+ userId);
-                if (userId == user.getEmail()){
+                System.out.println(user.getEmail());
+                if (userId.equals(user.getEmail())){
                 	DuplicatedRecordException e = new DuplicatedRecordException("Duplicated Instance ID. Id "+ userId + " was already assigned");
                 	throw e;                	
                 }
