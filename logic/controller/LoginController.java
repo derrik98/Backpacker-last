@@ -20,30 +20,16 @@ public class LoginController {
     }
 
     public LoginBean login(String password, String email) throws Exception {
-        // Esegui accesso al DB per verificare se username e password sono corretti
-        // Se sono corretti allora restituisci nome e cognome
-    	//System.out.println(username+password);
-    	LoginBean loginBean;
-//        UserDB userdb = new UserDB("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\userDB.txt");
-//        System.out.println(userdb.toString());
-//        if(userdb.checkCredential(email, password) == true) {
-//        	loginBean = new LoginBean();
-//        	System.out.println("utente trovato");
-//        	//loginBean.setUsername(username);
-//        	//loginBean.setPassword(password);
-//        }
-//        else {
-//            loginBean = null;
-//            System.out.println("utente non trovato");
-//        }
-        // Altrimenti restituisci null
+    	LoginBean loginBean;     
     	
     	List<User> list = UserDAO.retrieiveByUsername(email);
 
     	if(list.size() != 0) {
     		loginBean = new LoginBean();
-    		for (User user1 : list) {
-    			System.out.println(user1.toString() + "+++++++++++++++++++++");	
+    		for (User user : list) {
+    			System.out.println(user.toString() + "+++++++++++++++++++++");	
+    			loginBean.setEmail(user.getEmail());
+            	loginBean.setPassword(user.getPassword());
     			
     			}
     	}

@@ -2,19 +2,18 @@ package controller;
 
 public class LoginBean {
 
-	    private String nome;
-	    private String cognome;
 	    private String password;
 	    private String email;
+	    private boolean logged;
 
 	    public LoginBean() {
 	    }
 
-	    public String getUsername() {
+	    public String getEmail() {
 	        return email;
 	    }
 
-	    public void setUsername(String email) {
+	    public void setEmail(String email) {
 	        this.email = email;
 	    }
 
@@ -26,34 +25,22 @@ public class LoginBean {
 	        this.password = password;
 	    }
 
-	    public String getNome() {
-	        return nome;
-	    }
+	    public boolean getLogged() {
+			return logged;
+		}
 
-	    public void setNome(String nome) {
-	        this.nome = nome;
-	    }
+		public void setLogged(boolean logged) {
+			this.logged = logged;
+		}
 
-	    public String getCognome() {
-	        return cognome;
-	    }
-
-	    public void setCognome(String cognome) {
-	        this.cognome = cognome;
-	    }
-
-	    public boolean validate() throws Exception {
-	        // controllo sintattico
-	    	System.out.println("loginbean" + email + password);
+		public boolean validate() throws Exception {
+	    	System.out.println("loginbean" + getLogged() + getEmail() + getPassword());
 	    	
 	        if (email == null || email.equals("") || password.equals(null) || password.equals("")) {
 	            return false;
 	        }
 	        System.out.println(email + password);
 	        LoginBean utenteTrovato = LoginController.getInstance().login(password, email);
-//	        if(utenteTrovato==null)
-//	            return false;
-//	        return true;
 	        return utenteTrovato != null;
 
 	    }

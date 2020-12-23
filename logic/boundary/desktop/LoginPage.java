@@ -64,7 +64,7 @@ public class LoginPage extends HomeGraphicInterface{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			LoginBean lb = new LoginBean();
-			lb.setUsername(textFieldema.getText());
+			lb.setEmail(textFieldema.getText());
 			lb.setPassword(textFieldpsw.getText());
 			try {
 				lb.validate();

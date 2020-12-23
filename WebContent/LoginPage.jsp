@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <!--  dichiarazione e istanziazione di un loginBean !-->
-<jsp:useBean id="loginBean" scope="request" class="controller.LoginBean"/>
+<jsp:useBean id="loginBean" scope="session" class="controller.LoginBean"/>
 
 <!--  mappare attributi di un oggetto sui campi della form  !-->
 <jsp:setProperty name="loginBean" property="*" />
@@ -14,15 +14,16 @@
 		//String name = request.getParameter("username");
 		//String password = request.getParameter("password");
 		//System.out.println(name);
-
  	if(request.getParameter("login")!=null){
  		if(loginBean.validate()) { 
 %>
+		<jsp:setProperty name="loginBean" property="logged" value="true" />
 		<jsp:forward page="HomePage.jsp"/>
 <%
  		}
  		else {
 %>
+		<jsp:setProperty name="loginBean" property="logged" value="false" />
 		<p style="color: red">Dati errati</p>
 <%
  		}
@@ -45,8 +46,14 @@
 	
 	<table width=100%>
 			<td height="40"></td>
-			<th>&nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
-			<div style="float: right; text-align: right;"><a href="LoginPage.jsp"><u>Login</u></a> &nbsp;</div></th>
+			<th>
+				<label form="home">&nbsp;<a href="HomePage.jsp"> Home </a></label>
+				<label form="result">&nbsp;<a href="ResultPage.jsp"> Result </a></label>
+				<label form="profile">&nbsp;<a href="ProfilePage.jsp"> Profile </a></label>
+				<div style="float: right; text-align: right;">
+					<label form="log">&nbsp;<a href="LoginPage.jsp"><u> Login </u></a>&nbsp;</label>
+				</div>
+			</th>
 	</table>
 	
 	<br>
@@ -54,8 +61,8 @@
 		<form action="LoginPage.jsp" name="myform" method="POST">
 			<div class="row">
 				<div align="center">
-					<label form="username">Username</label>
-					<input type="text" id="username" name="username" autocomplete="off">
+					<label form="email">E-mail</label>
+					<input type="text" id="email" name="email" autocomplete="off">
 				</div>
 			</div>
 			<br>

@@ -59,11 +59,8 @@ public class RegisterBean {
             return false;
         }
         System.out.println(email + password);
-        RegisterBean utenteTrovato = RegisterController.getInstance().createProfile(name, surname, password, email);
-//        if(utenteTrovato==null)
-//            return false;
-//        return true;
-        return utenteTrovato != null;
+        RegisterBean utenteRegistrato = RegisterController.getInstance().createProfile(name, surname, password, email);
+        return utenteRegistrato != null;
 
     }
 

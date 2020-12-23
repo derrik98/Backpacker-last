@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<jsp:useBean id="loginBean" scope="session" class="controller.LoginBean"/>
 
 <!--  dichiarazione e istanziazione di un loginBean !-->
 <jsp:useBean id="registerBean" scope="request" class="controller.RegisterBean"/>
@@ -26,9 +27,30 @@
 <img src="oggetti.jpg" width=100% height=300px alt="Mia Immagine">
 	
 	<table width=100%>
-			<td height="15"></td>
-			<th>&nbsp; <a href="HomePage.jsp">Home</a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
-			<div style="float: right; text-align: right;"><a href="LoginPage.jsp"><u>Login</u></a> &nbsp;</div></th>
+			<td height="40"></td>
+			<th>
+				<label form="home">&nbsp;<a href="HomePage.jsp"> Home </a></label>
+				<label form="result">&nbsp;<a href="ResultPage.jsp"> Result </a></label>
+				<label form="profile">&nbsp;<a href="ProfilePage.jsp"> Profile </a></label>
+				<div style="float: right; text-align: right;">
+				<jsp:getProperty name="loginBean" property="logged" />
+					<%
+						if(loginBean.getLogged()){
+							System.out.println(loginBean.getLogged());
+					%>
+						<label form="log">&nbsp;<a href="LoginPage.jsp"><u> Logout </u></a>&nbsp;</label>
+					<%
+						}
+					else{
+						System.out.println(loginBean.getLogged());
+					%>
+					<label form="log">&nbsp;<a href="LoginPage.jsp"><u> Login </u></a>&nbsp;</label>
+					<%
+					}
+					%>
+
+				</div>
+			</th>
 	</table>
 	
 	<br>
@@ -68,9 +90,6 @@
 					
 					<%
 					if(request.getMethod().equalsIgnoreCase("POST")){
-						//String name = request.getParameter("username");
-						//String password = request.getParameter("password");
-						//System.out.println(name);
 
  					if(request.getParameter("Create profile")!=null){
  						if(registerBean.validate()) { 
@@ -85,10 +104,11 @@
  						}
  						else {
 					%>
-						<p style="color: green">Profilo errato</p>
+						<br>
+						<p style="color: red">Utente già registrato con questa email</p>
 					<%
  							}
-					 	}
+ 						}
 					}
  					%>
 					

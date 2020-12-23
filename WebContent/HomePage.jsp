@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-
+<jsp:useBean id="loginBean" scope="session" class="controller.LoginBean"/>
 <!--  dichiarazione e istanziazione di un loginBean !-->
 <jsp:useBean id="HomePage" scope="request" class="boundary.desktop.HomeGraphicInterface"/>
 
@@ -23,8 +23,28 @@
 	
 	<table width=100%>
 			<td height="40"></td>
-			<th>&nbsp; <a href="HomePage.jsp"><u>Home</u></a> &nbsp; <a href="ResultPage.jsp">Result</a> &nbsp; <a href="ProfilePage.jsp">Profile</a>
-			<div style="float: right; text-align: right;"><a href="LoginPage.jsp">Login</a> &nbsp;</div></th>
+			<th><label form="home">&nbsp;<a href="HomePage.jsp"> Home </a></label>
+				<label form="result">&nbsp;<a href="ResultPage.jsp"> Result </a></label>
+				<label form="profile">&nbsp;<a href="ProfilePage.jsp"> Profile </a></label>
+				<div style="float: right; text-align: right;">
+ 		
+					<%
+					
+						if(loginBean.getLogged()){
+					%>
+						<label form="log">&nbsp;<a href="LogoutPage.jsp"><u> Logout </u></a>&nbsp;</label>
+						
+					<%
+						}
+					else{
+					%>
+						<label form="log">&nbsp;<a href="LoginPage.jsp"><u> Login </u></a>&nbsp;</label>
+					<%
+					}
+					%>
+
+				</div>
+			</th>
 	</table>
 
 	<br>

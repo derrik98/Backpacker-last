@@ -83,7 +83,7 @@ public class UserDAO {
     
     
     
-    public static void addUser(User user) throws Exception {
+    public static boolean addUser(User user) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -105,8 +105,10 @@ public class UserDAO {
                 System.out.println("Found UserId: "+ userId);
                 System.out.println(user.getEmail());
                 if (userId.equals(user.getEmail())){
-                	DuplicatedRecordException e = new DuplicatedRecordException("Duplicated Instance ID. Id "+ userId + " was already assigned");
-                	throw e;                	
+                	//DuplicatedRecordException e = new DuplicatedRecordException("Duplicated Instance ID. Id "+ userId + " was already assigned");
+                	//throw e;
+                	System.out.println("user gia esistente");
+                	return false;
                 }
             }
             
@@ -127,6 +129,8 @@ public class UserDAO {
                 if (conn != null)
                     conn.close();
         }
+        System.out.println("utente aggiunto");
+        return true;
     }
     
     
