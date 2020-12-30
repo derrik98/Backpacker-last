@@ -2,8 +2,8 @@ package controller;
 
 import java.util.List;
 
-import entity.User;
-import entity.UserDAO;
+import entity.GenericUser;
+import entity.GenericUserDAO;
 
 public class LoginController {
 
@@ -22,11 +22,11 @@ public class LoginController {
     public LoginBean login(String password, String email) throws Exception {
     	LoginBean loginBean;     
     	
-    	List<User> list = UserDAO.retrieiveByUsername(email);
+    	List<GenericUser> list = GenericUserDAO.retrieiveByUsername(email);
 
     	if(list.size() != 0) {
     		loginBean = new LoginBean();
-    		for (User user : list) {
+    		for (GenericUser user : list) {
     			System.out.println(user.toString() + "+++++++++++++++++++++");	
     			loginBean.setEmail(user.getEmail());
             	loginBean.setPassword(user.getPassword());

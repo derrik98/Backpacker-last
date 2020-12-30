@@ -9,6 +9,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +26,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import controller.InterfaceBean;
+import controller.JSONNotFound;
 
 public class HomePage extends HomeGraphicInterface{
 
@@ -64,10 +74,14 @@ public class HomePage extends HomeGraphicInterface{
 		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
 		
 		
+		List<String> cityList = addCity();
+		String[] lineArray1 = countryList.toArray(new String[]{});
+	    final JComboBox<String> cit = new JComboBox<String>(lineArray1);
 		
-	    String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
+		
+	    //String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 
-	    final JComboBox<String> cit = new JComboBox<String>(cityList);
+	    //final JComboBox<String> cit = new JComboBox<String>(cityList);
 	    
 	    
 	    cit.setVisible(true);
@@ -108,10 +122,25 @@ public class HomePage extends HomeGraphicInterface{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				InterfaceBean interfaceBean = new InterfaceBean();
 				city = (String) cit.getSelectedItem();
 				country = (String) cou.getSelectedItem();
-				interfaceBean.validate();				
+				address = textField.getSelectedText();
+				InterfaceBean interfaceBean = new InterfaceBean(country, city, address);
+				
+				try {
+					try {
+						interfaceBean.validate();
+					} catch (JSONNotFound e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}				
 			}
 		});
 		
@@ -126,25 +155,72 @@ public class HomePage extends HomeGraphicInterface{
 		frame.setVisible(true);
 	}
 	
-	public List<String> addCountry() throws IOException {
-		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt"));
-	    List<String> country = new ArrayList<String>();
-	    	try {
-	    	  String line = null;
-	    	  while (( line = input.readLine()) != null){
-	    	    country.add(line);
-	    	  }
-	    	}
+	private List<String> addCity() {
+		List<String> city = new ArrayList<String>();
+		   
+	    JSONArray json;
+		try {
+			json = readJsonFromUrl("http://api.worldbank.org/v2/country?format=json&per_page=304");
+			JSONArray a = (JSONArray) json.get(1);
+			for(int i = 0; i <= a.length()-1; i++) {
+				JSONObject o = (JSONObject) a.getJSONObject(i);
+				if(!o.get("capitalCity").equals("")) {
+					System.out.println(o.get("name"));
+					city.add((String) o.get("name"));
+				}
+		    
+			}
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return city;
+	}
 
-	    	catch (FileNotFoundException e) {
-	    	    System.err.println("Error, file " + "C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt" + " didn't exist.");
-	    	}
-	    	finally {
-	    		input.close();
-	    	} 
+	public List<String> addCountry() throws IOException {
+	    List<String> country = new ArrayList<String>();
 	   
+	    JSONArray json;
+		try {
+			json = readJsonFromUrl("http://api.worldbank.org/v2/country?format=json&per_page=304");
+			JSONArray a = (JSONArray) json.get(1);
+			for(int i = 0; i <= a.length()-1; i++) {
+				JSONObject o = (JSONObject) a.getJSONObject(i);
+				if(!o.get("capitalCity").equals("")) {
+					System.out.println(o.get("name"));
+					country.add((String) o.get("name"));
+				}
+		    
+			}
+		} catch (IOException | JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return country;
 		
 	}
+		
+		public static JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
+		    InputStream is = new URL(url).openStream();
+		    try {
+		      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+		      String jsonText = readAll(rd);
+		      JSONArray json = new JSONArray(jsonText);
+		      return json;
+		    } finally {
+		      is.close();
+		    }
+		  }
+		
+		private static String readAll(Reader rd) throws IOException {
+		    StringBuilder sb = new StringBuilder();
+		    int cp;
+		    while ((cp = rd.read()) != -1) {
+		      sb.append((char) cp);
+		    }
+		    return sb.toString();
+		  }
 	
 }

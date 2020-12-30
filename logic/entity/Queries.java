@@ -24,7 +24,7 @@ public class Queries {
 //        return stmt.executeUpdate(updateStatement);
 //    }
 //    
-     public static int deleteUser(Statement stmt, User user) throws SQLException  {
+     public static int deleteUser(Statement stmt, GenericUser user) throws SQLException  {
         String deleteStatement = String.format("DELETE FROM  user  WHERE email = '%s'", user.getEmail());
         System.out.println(deleteStatement);
         return stmt.executeUpdate(deleteStatement);
@@ -38,7 +38,7 @@ public class Queries {
         }
     }
 
-	public static int addUser(Statement stmt, User user) throws SQLException {
+	public static int addUser(Statement stmt, GenericUser user) throws SQLException {
 		String insertStatement = String.format("INSERT INTO user (id, name, surname, email, password) VALUES (%s,'%s','%s','%s', '%s')", "NULL", user.getName(), user.getSurname(), user.getEmail(), user.getPassword());
 		System.out.println(insertStatement);
 		return stmt.executeUpdate(insertStatement);

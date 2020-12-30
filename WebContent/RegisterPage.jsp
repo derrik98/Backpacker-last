@@ -4,7 +4,7 @@
 <jsp:useBean id="loginBean" scope="session" class="controller.LoginBean"/>
 
 <!--  dichiarazione e istanziazione di un loginBean !-->
-<jsp:useBean id="registerBean" scope="request" class="controller.RegisterBean"/>
+<jsp:useBean id="registerBean" scope="request" class="controller.RegisterController.RegisterBean"/>
 
 <!--  mappare attributi di un oggetto sui campi della form  !-->
 <jsp:setProperty name="registerBean" property="*" />

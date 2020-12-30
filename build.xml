@@ -3,7 +3,7 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BackPacke">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="BackPacker">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../../../eclipse/jee-2020-09/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -57,31 +57,29 @@
     <path id="MySQL JDBC Driver.libraryclasspath">
         <pathelement location="../../../../../../Downloads/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar"/>
     </path>
-    <path id="BackPacke.classpath">
+    <path id="BackPacker.classpath">
         <pathelement location="build/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
         <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
         <path refid="JUnit 5.libraryclasspath"/>
         <path refid="MySQL JDBC Driver.libraryclasspath"/>
+        <pathelement location="../../../../../../Downloads/java-json.jar/java-json.jar"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="resources">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="build/classes">
             <fileset dir="logic">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -98,7 +96,7 @@
             <src path="src"/>
             <src path="resources"/>
             <src path="logic"/>
-            <classpath refid="BackPacke.classpath"/>
+            <classpath refid="BackPacker.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -115,24 +113,24 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="GenericUser">
+        <java classname="entity.GenericUser" failonerror="true" fork="yes">
+            <classpath refid="BackPacker.classpath"/>
+        </java>
+    </target>
     <target name="HomeGraphicInterface (1)">
         <java classname="boundary.desktop.HomeGraphicInterface" failonerror="true" fork="yes">
-            <classpath refid="BackPacke.classpath"/>
+            <classpath refid="BackPacker.classpath"/>
         </java>
     </target>
     <target name="JavaMysqlPreparedStatementInsertExample">
         <java classname="entity.JavaMysqlPreparedStatementInsertExample" failonerror="true" fork="yes">
-            <classpath refid="BackPacke.classpath"/>
-        </java>
-    </target>
-    <target name="User">
-        <java classname="entity.User" failonerror="true" fork="yes">
-            <classpath refid="BackPacke.classpath"/>
+            <classpath refid="BackPacker.classpath"/>
         </java>
     </target>
     <target name="UserDB">
         <java classname="entity.UserDB" failonerror="true" fork="yes">
-            <classpath refid="BackPacke.classpath"/>
+            <classpath refid="BackPacker.classpath"/>
         </java>
     </target>
 </project>

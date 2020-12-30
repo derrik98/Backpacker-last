@@ -1,5 +1,9 @@
 package controller;
 
+import java.io.IOException;
+
+import org.json.JSONException;
+
 public class InterfaceBean {
 	
 	private String country;
@@ -8,8 +12,10 @@ public class InterfaceBean {
 	
 	//IL CONTROLLER DOVREBBE ESSERE IL LISTENER
 	
-	public InterfaceBean() {
-		
+	public InterfaceBean(String country, String city, String address) {
+		this.country = country;
+		this.city = city;
+		this.address = address;
 	}
 
 	public String getCountry() {
@@ -39,15 +45,16 @@ public class InterfaceBean {
 	}
 	
 	
-	public boolean validate() {
+	public boolean validate() throws IOException, JSONException, JSONNotFound {
         // controllo sintattico
         if (country == "" || city == "" || address == null) {
+        	System.out.println(country + city + address);
             return false;
         }
 
         InterfaceBean datiCorretti = SearchController.getInstance().getInput(country, city, address);
-        //System.out.println(city);
-       // System.out.println(country);
+        System.out.println("provafatta" + city);//FARE COME LA VALIDATE
+        System.out.println(country);
         /*if(utenteTrovato==null)
             return false;
         return true;*/

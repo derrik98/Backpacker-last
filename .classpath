@@ -17,5 +17,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
+	<classpathentry kind="lib" path="C:/Users/danie/Downloads/java-json.jar/java-json.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

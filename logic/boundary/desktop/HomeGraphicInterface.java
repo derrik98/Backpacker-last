@@ -33,9 +33,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.InterfaceBean;
+import org.json.JSONException;
 
-public class HomeGraphicInterface extends Application{
+import controller.InterfaceBean;
+import controller.JSONNotFound;
+
+public class HomeGraphicInterface extends Application implements ActionListener{
 	
 	protected static JFrame frame;
 	protected static JLabel label;
@@ -58,6 +61,12 @@ public class HomeGraphicInterface extends Application{
 	public static setScene scene;
 	public static String country;
 	public static String city;
+	public static String address;
+	public static JComboBox<String> cou = null;
+	public static final JComboBox<String> cit = null;
+	public static JTextField textField;
+	public static JTextField textFieldc;
+	public static JTextField textFieldco;
 	
 	
 
@@ -191,16 +200,30 @@ public class HomeGraphicInterface extends Application{
 		countryPanel.add(stringCountry);
 		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		
-		List<String> countryList = addCountry();
-		String[] lineArray = countryList.toArray(new String[]{});
-	    final JComboBox<String> cou = new JComboBox<String>(lineArray);
+		
+		JLabel ttlll = new JLabel("insert country");
+	    ttlll.setVisible(true);
+	    countryPanel.add(ttlll);
+		
+		textFieldco = new JTextField(25);
+		textFieldco.setVisible(true);
+		countryPanel.add(textFieldco);
+		countryPanel.setBackground(Color.WHITE);
+		countryPanel.setMaximumSize(new Dimension(larghezza/3, 25));
+		
+		
+		
+		
+//		List<String> countryList = addCountry();
+//		String[] lineArray = countryList.toArray(new String[]{});
+//	    cou = new JComboBox<String>(lineArray);
 	   
 	    
-	    cou.setVisible(true);
-	    countryPanel.add(cou);
+	    //cou.setVisible(true);
+	    //countryPanel.add(cou);
 	    countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 	    	    
-	    countryPanel.setMaximumSize(new Dimension(larghezza/2, cou.getHeight()));
+	    countryPanel.setMaximumSize(new Dimension(larghezza/2, 25));
 	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    countryPanel.setBackground(Color.WHITE);
 	    //panel.add(countryPanel);
@@ -214,17 +237,32 @@ public class HomeGraphicInterface extends Application{
 		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
 		
 		
+		JLabel ttll = new JLabel("insert city");
+	    ttll.setVisible(true);
+	    cityPanel.add(ttll);
 		
-	    String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
+		textFieldc = new JTextField(25);
+		textFieldc.setVisible(true);
+		cityPanel.add(textFieldc);
+		cityPanel.setBackground(Color.WHITE);
+		cityPanel.setMaximumSize(new Dimension(larghezza/3, 25));
+		
+		
+		
+		//List<String> cityList = new ArrayList<String>(); 
+		//cityList.add("Select a City");
+		//cityList.add("CHOICE 2");
+		//String[] ar = cityList.toArray(new String[]{});
+	    //String[] arr = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 
-	    final JComboBox<String> cit = new JComboBox<String>(cityList);
+	    //final JComboBox<String> cit = new JComboBox<String>(ar);
 	    
 	    
-	    cit.setVisible(true);
-	    cityPanel.add(cit);
+	    //cit.setVisible(true);
+	    //cityPanel.add(cit);
 	    cityPanel.add(Box.createRigidArea(new Dimension(5,0)));
 	    	    
-	    cityPanel.setMaximumSize(new Dimension(larghezza/4, cit.getHeight()));
+	    cityPanel.setMaximumSize(new Dimension(larghezza/4, 25));
 	    cityPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    cityPanel.setBackground(Color.WHITE);
 //	    panel.add(cityPanel);
@@ -241,11 +279,11 @@ public class HomeGraphicInterface extends Application{
 	    ttl.setVisible(true);
 	    addressPanel.add(ttl);
 		
-		JTextField textField = new JTextField(25);
+		textField = new JTextField(25);
 		textField.setVisible(true);
 		addressPanel.add(textField);
 		addressPanel.setBackground(Color.WHITE);
-		addressPanel.setMaximumSize(new Dimension(larghezza/3, cou.getHeight()));
+		addressPanel.setMaximumSize(new Dimension(larghezza/3, 25));
 //		panel.add(addressPanel);
 //		panel.add(Box.createRigidArea(new Dimension(0,30)));
 		all.add(addressPanel);
@@ -254,16 +292,7 @@ public class HomeGraphicInterface extends Application{
 		///////////////////////////////////////
 		searchPanel = new JPanel();
 		JButton btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				InterfaceBean interfaceBean = new InterfaceBean();
-				city = (String) cit.getSelectedItem();
-				country = (String) cou.getSelectedItem();
-				interfaceBean.validate();				
-			}
-		});
+		btnSearch.addActionListener(this);
 		
 		searchPanel.add(btnSearch);
 		searchPanel.setBackground(Color.WHITE);
@@ -286,6 +315,8 @@ public class HomeGraphicInterface extends Application{
 			
 		
 	}
+
+	
 
 	public List<String> addCountry() throws IOException {
 		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt"));
@@ -321,6 +352,36 @@ public class HomeGraphicInterface extends Application{
 				optionPanel.getComponent(i+1).setFont(optionPanel.getComponent(i+1).getFont().deriveFont(attributes));
 			}
 		}
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String action = e.getActionCommand();
+        if (action.equals("Search")) {
+            System.out.println("Yes Button pressed!");
+            //country = (String) cou.getSelectedItem();
+            //System.out.println(String.valueOf(cit.getSelectedItem()));
+            //city = (String) "roma";
+            country = textFieldco.getText();
+            city = textFieldc.getText();
+			address = textField.getText();
+			InterfaceBean interfaceBean = new InterfaceBean(country, city, address);
+			
+				try {
+					interfaceBean.validate();
+				} catch (IOException | JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (JSONNotFound e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					e1.getMessage();
+				}
+        }
+        else if (action.equals("No")) {
+            System.out.println("No Button pressed!");
+        }
 		
 	}
 }
