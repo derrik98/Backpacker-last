@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,12 +21,8 @@ public class LoginPage extends HomeGraphicInterface{
 	
 	frame.repaint();
     JFrame.setDefaultLookAndFeelDecorated(true);
-    panel.remove(4);
     
-    JPanel loginPanel = new JPanel();
-	loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.Y_AXIS));
-	loginPanel.setBackground(Color.WHITE);
-    
+    customPanel.removeAll();
     
     JPanel emailPanel = new JPanel();
     
@@ -40,8 +35,8 @@ public class LoginPage extends HomeGraphicInterface{
 	
 	emailPanel.setBackground(Color.WHITE);
 	emailPanel.setMaximumSize(new Dimension(larghezza/3, 50));
-	loginPanel.add(emailPanel);
-	loginPanel.add(Box.createRigidArea(new Dimension(0,15)));
+	customPanel.add(emailPanel);
+	customPanel.add(Box.createRigidArea(new Dimension(0,15)));
 	
 	passwordPanel = new JPanel();
 	
@@ -52,8 +47,8 @@ public class LoginPage extends HomeGraphicInterface{
 	passwordPanel.add(textFieldpsw);
 	passwordPanel.setBackground(Color.WHITE);
 	passwordPanel.setMaximumSize(new Dimension(larghezza/3, 50));
-	loginPanel.add(passwordPanel);
-	loginPanel.add(Box.createRigidArea(new Dimension(0,15)));
+	customPanel.add(passwordPanel);
+	customPanel.add(Box.createRigidArea(new Dimension(0,15)));
 		
 	
 	JPanel btnLoginPanel = new JPanel();
@@ -82,12 +77,12 @@ public class LoginPage extends HomeGraphicInterface{
 	btnLoginPanel.add(btnLogin);
 	btnLoginPanel.setBackground(Color.WHITE);
 	btnLoginPanel.setMaximumSize(new Dimension(75, 15));
-	loginPanel.add(btnLoginPanel);
-	loginPanel.add(Box.createRigidArea(new Dimension(0,30)));
+	customPanel.add(btnLoginPanel);
+	customPanel.add(Box.createRigidArea(new Dimension(0,30)));
 	
 	JLabel or = new JLabel("Or");
-	loginPanel.add(or, BorderLayout.CENTER);
-	loginPanel.add(Box.createRigidArea(new Dimension(0,30)));
+	customPanel.add(or, BorderLayout.CENTER);
+	customPanel.add(Box.createRigidArea(new Dimension(0,30)));
 	
 	JPanel registrationPanel = new JPanel();
 	registrationPanel.setBackground(Color.WHITE);
@@ -95,10 +90,11 @@ public class LoginPage extends HomeGraphicInterface{
 	
 	registrationPanel.add(btnRegistration, BorderLayout.CENTER);
 	registrationPanel.setBackground(Color.WHITE);
-	loginPanel.add(registrationPanel);
-	panel.add(loginPanel);
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+	customPanel.add(registrationPanel);
+	customPanel.add(customPanel);
+	principalPanel.add(customPanel);
+    
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	}
 }

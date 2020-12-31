@@ -37,7 +37,7 @@ public class SearchController {
     	}
     	else {
     		interfacebean = null;
-    		throw new JSONNotFound();
+    		throw new JSONNotFound(address);
     	}
     		//JSONFactory secondcheck = new CityFromCountry();
     		//if(secondcheck.getJSON(city, country));

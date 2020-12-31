@@ -41,9 +41,9 @@ import controller.JSONNotFound;
 public class HomeGraphicInterface extends Application implements ActionListener{
 	
 	protected static JFrame frame;
-	protected static JLabel label;
+	protected static JLabel imageLabel;
 	protected static JLabel settings;
-	protected static JPanel panel; //pannello principale
+	protected static JPanel principalPanel; //pannello principale
 	protected static JPanel imagePanel;//pannello immagine in alto
 	protected static JPanel optionPanel;//pannello barra di stato
 	protected static JPanel countryPanel;//pannello selezione città
@@ -67,6 +67,8 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 	public static JTextField textField;
 	public static JTextField textFieldc;
 	public static JTextField textFieldco;
+	public static JPanel customPanel;
+	public static String isError;
 	
 	
 
@@ -78,11 +80,11 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		frame = new JFrame("la mia prma prova");
+		frame = new JFrame("Backpacker");
 		frame.setBackground(Color.WHITE);
-///////////////////////////////////////////////////////////
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        principalPanel = new JPanel();
+        principalPanel.setLayout(new BoxLayout(principalPanel, BoxLayout.Y_AXIS));
 
 		
         imagePanel = new JPanel();
@@ -91,22 +93,23 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		larghezza = (int) screenSize.getWidth();
 		altezza = (int) screenSize.getHeight();
 		
-		panel.setMaximumSize(new Dimension(larghezza, altezza));
+		principalPanel.setMaximumSize(new Dimension(larghezza, altezza));
 		
-		label = new JLabel();
+		imageLabel = new JLabel();
 		ImageIcon image = new ImageIcon("resources/oggetti.jpg");
 		ImageIcon imageIcon = new ImageIcon(image.getImage().getScaledInstance(larghezza, image.getIconHeight()/2, Image.SCALE_AREA_AVERAGING));
 		System.out.println("bellaaaa" + imageIcon.getIconWidth() +"," +  imageIcon.getIconHeight());
-		label.setMaximumSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
+		imageLabel.setMaximumSize(new Dimension(imageIcon.getIconWidth(), imageIcon.getIconHeight()));
 
 		imagePanel.setMaximumSize(new Dimension(larghezza, (imageIcon.getIconHeight())));
-		label.setIcon(imageIcon);
+		imageLabel.setIcon(imageIcon);
 		imagePanel.setBackground(Color.WHITE);
-		imagePanel.add(label);
-		panel.add(imagePanel);
-		panel.add(Box.createRigidArea(new Dimension(0,5)));
+		imagePanel.add(imageLabel);
+		principalPanel.add(imagePanel);
+		principalPanel.add(Box.createRigidArea(new Dimension(0,5)));
 		System.out.println("ciaoooo"+imagePanel.getMaximumSize().height);
-		/////////////////////////////////////////////////////////////
+		
+		
 		optionPanel = new JPanel();
 		optionPanel.setLayout(new BoxLayout(optionPanel, BoxLayout.X_AXIS));
 		optionPanel.add(Box.createRigidArea(new Dimension(15,0)));
@@ -185,13 +188,13 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		//optionPanel.setMaximumSize(new Dimension(larghezza, Home.getMaximumSize().height+5));
 		//optionPanel.setBorder(new LineBorder(Color.BLACK));
 		System.out.println("pannello" + optionPanel.getHeight());
-		panel.add(optionPanel);
-		panel.add(Box.createRigidArea(new Dimension(0,30)));
+		principalPanel.add(optionPanel);
+		principalPanel.add(Box.createRigidArea(new Dimension(0,30)));
 		
 	////////////////////////////////////////////////////////////////////////
-		JPanel all = new JPanel();
-		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-		all.setBackground(Color.WHITE);
+		customPanel = new JPanel();
+		customPanel.setLayout(new BoxLayout(customPanel, BoxLayout.Y_AXIS));
+		customPanel.setBackground(Color.WHITE);
 		
 		countryPanel = new JPanel();
 		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
@@ -210,29 +213,16 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		countryPanel.add(textFieldco);
 		countryPanel.setBackground(Color.WHITE);
 		countryPanel.setMaximumSize(new Dimension(larghezza/3, 25));
-		
-		
-		
-		
-//		List<String> countryList = addCountry();
-//		String[] lineArray = countryList.toArray(new String[]{});
-//	    cou = new JComboBox<String>(lineArray);
-	   
-	    
-	    //cou.setVisible(true);
-	    //countryPanel.add(cou);
 	    countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 	    	    
 	    countryPanel.setMaximumSize(new Dimension(larghezza/2, 25));
 	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    countryPanel.setBackground(Color.WHITE);
-	    //panel.add(countryPanel);
-	    //panel.add(Box.createRigidArea(new Dimension(0,30)));
-	    all.add(countryPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
+	  
+	    customPanel.add(countryPanel);
+	    customPanel.add(Box.createRigidArea(new Dimension(0,30)));
 	    
 	    
-	    //////////////////////////////////////////////////////////////////////////
 		cityPanel = new JPanel();
 		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
 		
@@ -247,31 +237,16 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		cityPanel.setBackground(Color.WHITE);
 		cityPanel.setMaximumSize(new Dimension(larghezza/3, 25));
 		
-		
-		
-		//List<String> cityList = new ArrayList<String>(); 
-		//cityList.add("Select a City");
-		//cityList.add("CHOICE 2");
-		//String[] ar = cityList.toArray(new String[]{});
-	    //String[] arr = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
 
-	    //final JComboBox<String> cit = new JComboBox<String>(ar);
-	    
-	    
-	    //cit.setVisible(true);
-	    //cityPanel.add(cit);
 	    cityPanel.add(Box.createRigidArea(new Dimension(5,0)));
 	    	    
 	    cityPanel.setMaximumSize(new Dimension(larghezza/4, 25));
 	    cityPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    cityPanel.setBackground(Color.WHITE);
-//	    panel.add(cityPanel);
-//	    panel.add(Box.createRigidArea(new Dimension(0,30)));
-	    all.add(cityPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
+
+	    customPanel.add(cityPanel);
+	    customPanel.add(Box.createRigidArea(new Dimension(0,30)));
 	    
-	    
-		////////////////////////////////////////////////////////
 	    addressPanel = new JPanel();
 	    
 	    
@@ -284,27 +259,25 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		addressPanel.add(textField);
 		addressPanel.setBackground(Color.WHITE);
 		addressPanel.setMaximumSize(new Dimension(larghezza/3, 25));
-//		panel.add(addressPanel);
-//		panel.add(Box.createRigidArea(new Dimension(0,30)));
-		all.add(addressPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
+
+		customPanel.add(addressPanel);
+	    customPanel.add(Box.createRigidArea(new Dimension(0,30)));
 		
-		///////////////////////////////////////
+		
 		searchPanel = new JPanel();
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(this);
 		
 		searchPanel.add(btnSearch);
 		searchPanel.setBackground(Color.WHITE);
-		//panel.add(searchPanel);
-		all.add(searchPanel);
+		customPanel.add(searchPanel);
 		
-		panel.add(all);
+		principalPanel.add(customPanel);
 	    
 		
 		
-		panel.setBackground(Color.WHITE);
-		frame.add(panel);
+		principalPanel.setBackground(Color.WHITE);
+		frame.add(principalPanel);
 		System.out.println(larghezza + "," + altezza);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -360,9 +333,6 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		String action = e.getActionCommand();
         if (action.equals("Search")) {
             System.out.println("Yes Button pressed!");
-            //country = (String) cou.getSelectedItem();
-            //System.out.println(String.valueOf(cit.getSelectedItem()));
-            //city = (String) "roma";
             country = textFieldco.getText();
             city = textFieldc.getText();
 			address = textField.getText();
@@ -371,12 +341,15 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 				try {
 					interfaceBean.validate();
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (JSONNotFound e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-					e1.getMessage();
+				    try {
+				    	isError = e1.getMessage();
+						new HomePage().setHomePage();
+					} catch (IOException e2) {
+						e2.printStackTrace();
+					}
+				   
 				}
         }
         else if (action.equals("No")) {

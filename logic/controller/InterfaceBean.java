@@ -12,10 +12,7 @@ public class InterfaceBean {
 	
 	//IL CONTROLLER DOVREBBE ESSERE IL LISTENER
 	
-	public InterfaceBean(String country, String city, String address) {
-		this.country = country;
-		this.city = city;
-		this.address = address;
+	public InterfaceBean() {
 	}
 
 	public String getCountry() {

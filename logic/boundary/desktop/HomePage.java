@@ -38,118 +38,148 @@ public class HomePage extends HomeGraphicInterface{
 	public void setHomePage() throws IOException {
 		frame.repaint();
         JFrame.setDefaultLookAndFeelDecorated(true);
-        panel.remove(4);
-
-        JPanel all = new JPanel();
-		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-		all.setBackground(Color.WHITE);
-		
-		countryPanel = new JPanel();
-		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
-		
-		JLabel stringCountry = new JLabel("Country");
-		countryPanel.add(stringCountry);
-		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
-		
-		List<String> countryList = addCountry();
-		String[] lineArray = countryList.toArray(new String[]{});
-	    final JComboBox<String> cou = new JComboBox<String>(lineArray);
-	   
-	    
-	    cou.setVisible(true);
-	    countryPanel.add(cou);
-	    countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
-	    	    
-	    countryPanel.setMaximumSize(new Dimension(larghezza/2, cou.getHeight()));
-	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    countryPanel.setBackground(Color.WHITE);
-	    //panel.add(countryPanel);
-	    //panel.add(Box.createRigidArea(new Dimension(0,30)));
-	    all.add(countryPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
-	    
-	    
-	    //////////////////////////////////////////////////////////////////////////
-		cityPanel = new JPanel();
-		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
-		
-		
-		List<String> cityList = addCity();
-		String[] lineArray1 = countryList.toArray(new String[]{});
-	    final JComboBox<String> cit = new JComboBox<String>(lineArray1);
-		
-		
-	    //String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
-
-	    //final JComboBox<String> cit = new JComboBox<String>(cityList);
-	    
-	    
-	    cit.setVisible(true);
-	    cityPanel.add(cit);
-	    cityPanel.add(Box.createRigidArea(new Dimension(5,0)));
-	    	    
-	    cityPanel.setMaximumSize(new Dimension(larghezza/4, cit.getHeight()));
-	    cityPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-	    cityPanel.setBackground(Color.WHITE);
-//	    panel.add(cityPanel);
-//	    panel.add(Box.createRigidArea(new Dimension(0,30)));
-	    all.add(cityPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
-	    
-	    
-		////////////////////////////////////////////////////////
-	    addressPanel = new JPanel();
-	    
-	    
-	    JLabel ttl = new JLabel("insert address");
-	    ttl.setVisible(true);
-	    addressPanel.add(ttl);
-		
-		JTextField textField = new JTextField(25);
-		textField.setVisible(true);
-		addressPanel.add(textField);
-		addressPanel.setBackground(Color.WHITE);
-		addressPanel.setMaximumSize(new Dimension(larghezza/3, cou.getHeight()));
-//		panel.add(addressPanel);
-//		panel.add(Box.createRigidArea(new Dimension(0,30)));
-		all.add(addressPanel);
-	    all.add(Box.createRigidArea(new Dimension(0,30)));
-		
-		///////////////////////////////////////
-		searchPanel = new JPanel();
-		JButton btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				city = (String) cit.getSelectedItem();
-				country = (String) cou.getSelectedItem();
-				address = textField.getSelectedText();
-				InterfaceBean interfaceBean = new InterfaceBean(country, city, address);
-				
-				try {
-					try {
-						interfaceBean.validate();
-					} catch (JSONNotFound e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}				
-			}
-		});
-		
-		searchPanel.add(btnSearch);
-		searchPanel.setBackground(Color.WHITE);
-		//panel.add(searchPanel);
-		all.add(searchPanel);
-		
-		panel.add(all);
+        customPanel.removeAll();
+        customPanel.setAlignmentX(larghezza/2);
+        customPanel.add(countryPanel);
+        customPanel.add(Box.createRigidArea(new Dimension(0,30)));
+        customPanel.add(cityPanel);
+        customPanel.add(Box.createRigidArea(new Dimension(0,30)));
+        customPanel.add(addressPanel);
+        customPanel.add(Box.createRigidArea(new Dimension(0,30)));
+        
+        if(isError != "") {
+            JLabel error = new JLabel(isError);
+    		error.setForeground(Color.RED);
+    	    //error.setVisible(true);
+    	    customPanel.add(error);
+    	    customPanel.add(Box.createRigidArea(new Dimension(0,30)));
+    	    isError="";
+            }
+        
+        
+        customPanel.add(searchPanel);
+        customPanel.add(Box.createRigidArea(new Dimension(0,30)));
+        
+        
+		principalPanel.add(customPanel);
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+        
+        
+        
+//        principalPanel.remove(4);
+//
+//        JPanel all = new JPanel();
+//		all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
+//		all.setBackground(Color.WHITE);
+//		
+//		countryPanel = new JPanel();
+//		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
+//		
+//		JLabel stringCountry = new JLabel("Country");
+//		countryPanel.add(stringCountry);
+//		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
+//		
+//		List<String> countryList = addCountry();
+//		String[] lineArray = countryList.toArray(new String[]{});
+//	    final JComboBox<String> cou = new JComboBox<String>(lineArray);
+//	   
+//	    
+//	    cou.setVisible(true);
+//	    countryPanel.add(cou);
+//	    countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
+//	    	    
+//	    countryPanel.setMaximumSize(new Dimension(larghezza/2, cou.getHeight()));
+//	    countryPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//	    countryPanel.setBackground(Color.WHITE);
+//	    //panel.add(countryPanel);
+//	    //panel.add(Box.createRigidArea(new Dimension(0,30)));
+//	    all.add(countryPanel);
+//	    all.add(Box.createRigidArea(new Dimension(0,30)));
+//	    
+//	    
+//	    //////////////////////////////////////////////////////////////////////////
+//		cityPanel = new JPanel();
+//		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
+//		
+//		
+//		List<String> cityList = addCity();
+//		String[] lineArray1 = countryList.toArray(new String[]{});
+//	    final JComboBox<String> cit = new JComboBox<String>(lineArray1);
+//		
+//		
+//	    //String[] cityList = { "Select a City","CHOICE 2", "CHOICE 3","CHOICE 4","CHOICE 5","CHOICE 6"};
+//
+//	    //final JComboBox<String> cit = new JComboBox<String>(cityList);
+//	    
+//	    
+//	    cit.setVisible(true);
+//	    cityPanel.add(cit);
+//	    cityPanel.add(Box.createRigidArea(new Dimension(5,0)));
+//	    	    
+//	    cityPanel.setMaximumSize(new Dimension(larghezza/4, cit.getHeight()));
+//	    cityPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//	    cityPanel.setBackground(Color.WHITE);
+////	    panel.add(cityPanel);
+////	    panel.add(Box.createRigidArea(new Dimension(0,30)));
+//	    all.add(cityPanel);
+//	    all.add(Box.createRigidArea(new Dimension(0,30)));
+//	    
+//	    
+//		////////////////////////////////////////////////////////
+//	    addressPanel = new JPanel();
+//	    
+//	    
+//	    JLabel ttl = new JLabel("insert address");
+//	    ttl.setVisible(true);
+//	    addressPanel.add(ttl);
+//		
+//		JTextField textField = new JTextField(25);
+//		textField.setVisible(true);
+//		addressPanel.add(textField);
+//		addressPanel.setBackground(Color.WHITE);
+//		addressPanel.setMaximumSize(new Dimension(larghezza/3, cou.getHeight()));
+////		panel.add(addressPanel);
+////		panel.add(Box.createRigidArea(new Dimension(0,30)));
+//		all.add(addressPanel);
+//	    all.add(Box.createRigidArea(new Dimension(0,30)));
+//		
+//		///////////////////////////////////////
+//		searchPanel = new JPanel();
+//		JButton btnSearch = new JButton("Search");
+//		btnSearch.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				city = (String) cit.getSelectedItem();
+//				country = (String) cou.getSelectedItem();
+//				address = textField.getSelectedText();
+//				InterfaceBean interfaceBean = new InterfaceBean(country, city, address);
+//				
+//				try {
+//					try {
+//						interfaceBean.validate();
+//					} catch (JSONNotFound e1) {
+//						// TODO Auto-generated catch block
+//						e1.printStackTrace();
+//					}
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				} catch (JSONException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}				
+//			}
+//		});
+//		
+//		searchPanel.add(btnSearch);
+//		searchPanel.setBackground(Color.WHITE);
+//		//panel.add(searchPanel);
+//		all.add(searchPanel);
+//		
+//		principalPanel.add(all);
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
