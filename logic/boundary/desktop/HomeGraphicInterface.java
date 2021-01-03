@@ -340,8 +340,8 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 			
 				try {
 					interfaceBean.validate();
-				} catch (IOException | JSONException e1) {
-					e1.printStackTrace();
+				} catch (IOException | JSONException e3) {
+					e3.printStackTrace();
 				} catch (JSONNotFound e1) {
 				    try {
 				    	isError = e1.getMessage();

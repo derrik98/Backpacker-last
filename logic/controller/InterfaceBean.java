@@ -1,18 +1,29 @@
 package controller;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.List;
 
 import org.json.JSONException;
 
-public class InterfaceBean {
+public class InterfaceBean{
 	
 	private String country;
 	private String city;
 	private String address;
+	private List<String> monuments;
 	
-	//IL CONTROLLER DOVREBBE ESSERE IL LISTENER
-	
+
+
 	public InterfaceBean() {
+		
+	}
+
+	public InterfaceBean(String country, String city, String address) {
+		this.country = country;
+		this.city = city;
+		this.address = address;
+		System.out.println(country + city + address);
 	}
 
 	public String getCountry() {
@@ -49,7 +60,7 @@ public class InterfaceBean {
             return false;
         }
 
-        InterfaceBean datiCorretti = SearchController.getInstance().getInput(country, city, address);
+        InterfaceBean datiCorretti = SearchController.getInstance().search(this.getCountry(), this.getCity(), this.getAddress());
         System.out.println("provafatta" + city);//FARE COME LA VALIDATE
         System.out.println(country);
         /*if(utenteTrovato==null)
@@ -58,6 +69,14 @@ public class InterfaceBean {
         return datiCorretti != null;
 
     }
+
+	public List<String> getMonuments() {
+		return monuments;
+	}
+
+	public void setMonuments(List<String> monuments) {
+		this.monuments = monuments;
+	}
 	
 
 }

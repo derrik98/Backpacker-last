@@ -6,21 +6,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AddressFromCityAndCountry extends JSONFactory{
+public class AddressFromCity extends JSONFactory{
 	
 
 	@Override
-	public boolean getJSON(String address, String city) {
+	public boolean getJSON(String address, String city) throws JSONNotFound {
 		JSONObject json;
 		try {
 			json = readJsonFromUrl("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + address + "&types=geocode&key=AIzaSyDKAl31fAwxbDImIXXOxSre5uma5WdOgHg");
 			JSONArray a = (JSONArray) json.get("predictions");
 			JSONObject o = a.getJSONObject(0);
 			JSONArray arr = o.getJSONArray("terms");
-			JSONObject ob = arr.getJSONObject(2);
+			JSONObject ob = arr.getJSONObject(1);
 			
 			if(ob.get("value").equals(city)) {
 				return true;
+			}
+			
+			if(!json.getString("status").equals("OK")) {
+				throw new JSONNotFound("Questa via non è presente in questo città");
 			}
 			
 					System.out.println(json);
@@ -33,7 +37,7 @@ public class AddressFromCityAndCountry extends JSONFactory{
 			
 			e.printStackTrace();
 		}
-		return false;
+		return true;
 	}
 	
 }

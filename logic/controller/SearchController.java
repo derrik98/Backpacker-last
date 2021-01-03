@@ -5,17 +5,9 @@ import org.json.JSONException;
 
 public class SearchController {
 	
-	//private static String country;
-	//private static String city;
-	//private static String address;
 	
 	private static SearchController INSTANCE = null;
 	
-//	private SearchController(String country, String city, String address) {
-//		SearchController.country = country;
-//		SearchController.city = city;
-//		SearchController.address = address;
-//	}
 
     public static SearchController getInstance() {
         if(INSTANCE==null) {
@@ -27,22 +19,28 @@ public class SearchController {
     }
     
 
-    public InterfaceBean getInput(String country, String city, String address) throws IOException, JSONException, JSONNotFound {
+    public InterfaceBean search(String country, String city, String address) throws IOException, JSONException, JSONNotFound {
     	InterfaceBean interfacebean;
     	System.out.println(country + city + address);
-    	JSONFactory firstcheck = new CityFromCountry();
-    	if(firstcheck.getJSON(city, country)==true) {
-    		interfacebean = new InterfaceBean(address, city, country);
-    		
+    	JSONFactory firstCheck = new CityFromCountry();
+    	if(firstCheck.getJSON(city, country)==true) {
+    		interfacebean = new InterfaceBean(country, city, address);
+    		JSONFactory secondCheck = new AddressFromCity();
+    		if(secondCheck.getJSON(address, city)) {
+				
+				  JSONFactory thirdCheck = new MonumentFromAddress();
+				  if(thirdCheck.getJSON(address, "monument")) {
+				  interfacebean.setMonuments(MonumentFromAddress.monuments); } else {
+				  interfacebean = null; }
+				 
+    		}
+    		else {
+    			interfacebean = null;
+    		}	
     	}
     	else {
     		interfacebean = null;
-    		throw new JSONNotFound(address);
     	}
-    		//JSONFactory secondcheck = new CityFromCountry();
-    		//if(secondcheck.getJSON(city, country));
-    	//}
-    	
 		return interfacebean;
     	}
 	
