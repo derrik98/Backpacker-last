@@ -58,7 +58,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 	protected static JLabel Home;
 	protected static int larghezza;
 	protected static int altezza;
-	public static setScene scene;
+	public static HomeGraphicInterface scene;
 	public static String country;
 	public static String city;
 	public static String address;
@@ -73,7 +73,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 	
 
 	public static void main(String[] args) {
-		scene = new setScene();
+		scene = new HomeGraphicInterface();
 		
 		launch(args);
 	}
@@ -141,7 +141,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		Result.addMouseListener(new MouseAdapter() {
 			 public void mouseClicked(MouseEvent e) {
 				 setFont(Result);
-				// scene.getSingletonInstance().setResult();
+				 new ResultPage().getSingletonInstance().setResultPage();
 		        }
 		});
 		optionPanel.add(Result);
@@ -340,6 +340,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 			
 				try {
 					interfaceBean.validate();
+					new ResultPage().getSingletonInstance().setResultPage();
 				} catch (IOException | JSONException e3) {
 					e3.printStackTrace();
 				} catch (JSONNotFound e1) {

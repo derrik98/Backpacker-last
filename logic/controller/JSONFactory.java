@@ -35,6 +35,14 @@ public abstract class JSONFactory {
 	    }
 	  }
 	
+	public static String convertString(String string) {
+		String newString;
+		newString = string.replaceAll("\\s+", "");
+		System.out.println(string);
+		return newString;
+		
+	}
+	
 	public abstract boolean getJSON(String city, String country) throws JSONNotFound;
 	
 }

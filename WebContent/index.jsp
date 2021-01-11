@@ -11,7 +11,6 @@
 <jsp:useBean id="interfaceBean" scope="session" class="controller.InterfaceBean"/>
 <jsp:setProperty property="*" name="interfaceBean"/>
 
-
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -27,7 +26,7 @@
 	
 	<table width=100%>
 			<td height="40"></td>
-			<th><label form="home">&nbsp;<a href="HomePage.jsp"> Home </a></label>
+			<th><label form="home">&nbsp;<a href="index.jsp"> Home </a></label>
 				<label form="result">&nbsp;<a href="ResultPage.jsp"> Result </a></label>
 				<label form="profile">&nbsp;<a href="ProfilePage.jsp"> Profile </a></label>
 				<div style="float: right; text-align: right;">
@@ -89,10 +88,10 @@
 				<%
 	if(request.getMethod().equalsIgnoreCase("POST")){
  		if(request.getParameter("search")!=null){
- 			String country = request.getParameter("country");
- 			String city = request.getParameter("city");
- 			String address = request.getParameter("address");
- 			System.out.println(country + city + address);
+ 			//String country = request.getParameter("country");
+ 			//String city = request.getParameter("city");
+ 			//String address = request.getParameter("address");
+ 			//System.out.println(country + city + address);
  			try {
 				interfaceBean.validate(); 
 				%>
@@ -123,10 +122,6 @@
 			</td>
 	</div>
 	</tr>
-	
-	
-	
-	
 	</form>
 		</div>
 	

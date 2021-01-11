@@ -11,10 +11,7 @@ public class InterfaceBean{
 	private String country;
 	private String city;
 	private String address;
-	private List<String> monuments;
 	
-
-
 	public InterfaceBean() {
 		
 	}
@@ -60,23 +57,17 @@ public class InterfaceBean{
             return false;
         }
 
-        InterfaceBean datiCorretti = SearchController.getInstance().search(this.getCountry(), this.getCity(), this.getAddress());
+        InterfaceBean datiCorretti = SearchController.getInstance().getInput(this.getCountry(), this.getCity(), this.getAddress());
         System.out.println("provafatta" + city);//FARE COME LA VALIDATE
         System.out.println(country);
+        
+        System.out.println(datiCorretti.country + datiCorretti.city + datiCorretti.address);
         /*if(utenteTrovato==null)
             return false;
         return true;*/
         return datiCorretti != null;
 
     }
-
-	public List<String> getMonuments() {
-		return monuments;
-	}
-
-	public void setMonuments(List<String> monuments) {
-		this.monuments = monuments;
-	}
 	
 
 }
