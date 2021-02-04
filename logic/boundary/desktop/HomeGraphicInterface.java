@@ -199,14 +199,14 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		countryPanel = new JPanel();
 		countryPanel.setLayout(new BoxLayout(countryPanel, BoxLayout.X_AXIS));
 		
-		JLabel stringCountry = new JLabel("Country");
+		JLabel stringCountry = new JLabel("insert country ");
 		countryPanel.add(stringCountry);
 		countryPanel.add(Box.createRigidArea(new Dimension(5,0)));
 		
 		
-		JLabel ttlll = new JLabel("insert country");
-	    ttlll.setVisible(true);
-	    countryPanel.add(ttlll);
+		//JLabel ttlll = new JLabel("insert country");
+	   // ttlll.setVisible(true);
+	    //countryPanel.add(ttlll);
 		
 		textFieldco = new JTextField(25);
 		textFieldco.setVisible(true);
@@ -227,7 +227,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 		cityPanel.setLayout(new BoxLayout(cityPanel, BoxLayout.X_AXIS));
 		
 		
-		JLabel ttll = new JLabel("insert city");
+		JLabel ttll = new JLabel("insert city ");
 	    ttll.setVisible(true);
 	    cityPanel.add(ttll);
 		
@@ -250,7 +250,7 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 	    addressPanel = new JPanel();
 	    
 	    
-	    JLabel ttl = new JLabel("insert address");
+	    JLabel ttl = new JLabel("insert address ");
 	    ttl.setVisible(true);
 	    addressPanel.add(ttl);
 		
@@ -291,26 +291,26 @@ public class HomeGraphicInterface extends Application implements ActionListener{
 
 	
 
-	public List<String> addCountry() throws IOException {
-		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt"));
-	    List<String> country = new ArrayList<String>();
-	    	try {
-	    	  String line = null;
-	    	  while (( line = input.readLine()) != null){
-	    	    country.add(line);
-	    	  }
-	    	}
-
-	    	catch (FileNotFoundException e) {
-	    	    System.err.println("Error, file " + "C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt" + " didn't exist.");
-	    	}
-	    	finally {
-	    		input.close();
-	    	} 
-	   
-		return country;
-		
-	}
+//	public List<String> addCountry() throws IOException {
+//		BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt"));
+//	    List<String> country = new ArrayList<String>();
+//	    	try {
+//	    	  String line = null;
+//	    	  while (( line = input.readLine()) != null){
+//	    	    country.add(line);
+//	    	  }
+//	    	}
+//
+//	    	catch (FileNotFoundException e) {
+//	    	    System.err.println("Error, file " + "C:\\Users\\danie\\OneDrive\\Desktop\\Università\\ISPW\\Progetto Finale\\trunk\\resources\\Paesi.txt" + " didn't exist.");
+//	    	}
+//	    	finally {
+//	    		input.close();
+//	    	} 
+//	   
+//		return country;
+//		
+//	}
 
 	protected void setFont(JLabel label) {
 		for(int i = 0; i <= optionPanel.getComponentCount()-1; i++) {

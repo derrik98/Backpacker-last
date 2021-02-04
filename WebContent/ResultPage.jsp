@@ -23,7 +23,7 @@
 			<td height="40"></td>
 			<th>
 				<label form="home">&nbsp;<a href="index.jsp"> Home </a></label>
-				<label form="result">&nbsp;<a href="ResultPage.jsp"><u> Result </u></a></label>
+				<label form="result">&nbsp;<a href="ResultPage.jsp"><u>Result</u></a></label>
 				<label form="profile">&nbsp;<a href="ProfilePage.jsp"> Profile </a></label>
 				<div style="float: right; text-align: right;">
 					<%
